@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "newLine": "lf"
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "includes": [
+    "./src/**/*",
+    "./test/**/*"
+  ]
+}
