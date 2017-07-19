@@ -1,21 +1,23 @@
 import {Model} from './model'
-import {GenericVillage, CommonConfig} from 'vineyard-village'
-import {compareConfigs} from 'vineyard-village'
+import {GenericVillage, CommonConfig, loadLabConfig, loadAndCheckConfig} from 'vineyard-village'
 
-const config = require('../config/config.json')
+export interface LabConfig {
+
+}
 
 export interface Config extends CommonConfig {
 
 }
 
-compareConfigs("config.json", config, "config-sample.json", require('../config/config-sample.json'))
-
 export class Village extends GenericVillage<Model, Config> {
+  labConfig: LabConfig = loadLabConfig<LabConfig>()
 
   constructor() {
-    super({
-      config: config,
-      schema: require('./model/schema.json')
-    })
+    super()
   }
+
+  getLabConfig(): LabConfig {
+    return this.labConfig
+  }
+
 }
