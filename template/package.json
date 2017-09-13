@@ -9,7 +9,7 @@
   "author": "",
   "dependencies": {
     "pg": "^6.1.5",
-    "vineyard-ground": "0.x.x",
+    "vineyard-ground": "vineyard-bloom/vineyard-ground",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn",
     "vineyard-users": "vineyard-bloom/vineyard-users",
     "vineyard-village": "vineyard-bloom/vineyard-village"
