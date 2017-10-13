@@ -1,0 +1,19 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "description": "",
+  "main": "scripts/api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "dependencies": {
+    "vineyard-ground": "vineyard-bloom/vineyard-ground",
+    "vineyard-lawn": "vineyard-bloom/vineyard-lawn",
+    "vineyard-users": "vineyard-bloom/vineyard-users"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.16",
+    "source-map-support": "^0.4.15"
+  }
+}

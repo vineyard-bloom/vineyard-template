@@ -8,11 +8,8 @@
   },
   "author": "",
   "dependencies": {
-    "pg": "^6.1.5",
     "vineyard-ground": "vineyard-bloom/vineyard-ground",
-    "vineyard-lawn": "vineyard-bloom/vineyard-lawn",
-    "vineyard-users": "vineyard-bloom/vineyard-users",
-    "vineyard-village": "vineyard-bloom/vineyard-village"
+    "vineyard-cron": "vineyard-bloom/vineyard-cron"
   },
   "devDependencies": {
     "@types/node": "^7.0.16",
