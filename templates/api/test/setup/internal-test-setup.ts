@@ -1,4 +1,4 @@
-import {Model} from "../../src/backing-services/model/model";
+import {Model} from "../../src/model/model";
 import {WebService} from "../../src/web-service";
 import {MockResources, TestVillage} from "./test-village";
 import {EndpointInitializer} from "../../src/endpoints/endpoint-initializer";
@@ -16,8 +16,7 @@ export async function resetDb(){
     await (<DevModeler> model.ground).regenerate();
 }
 
-
-export function getCustomizedMockResourceServerInitialization(overrideOptions: Partial<MockResources>): ServerInitializationFlow {
+export function getCustomMockResourceServerInitialization(overrideOptions: Partial<MockResources>): ServerInitializationFlow {
     const village: TestVillage = new TestVillage(overrideOptions);
     const webService: WebService = new WebService(village);
     const model: Model = village.getModel();
@@ -31,3 +30,8 @@ export interface ServerInitializationFlow {
     model: Model
     endpointInitializer: EndpointInitializer
 }
+
+export const defaultServerInitiatilization: ServerInitializationFlow  = {
+    village: defaultTestVillage, webService: defaultTestWebService, model: model, endpointInitializer: defaultTestWebService.getEndpointInitializer()
+};
+

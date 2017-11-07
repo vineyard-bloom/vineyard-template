@@ -1,5 +1,5 @@
-import {UserDao} from "../backing-services/model/user-dao";
-import {User, WithoutId} from "../backing-services/model/model-types";
+import {UserDao} from "../model/user-dao";
+import {User, WithoutId} from "../model/model-types";
 import {BadRequest} from "vineyard-lawn/source/errors";
 
 export class UserLogic {
@@ -10,12 +10,12 @@ export class UserLogic {
     }
 
     //TODO: edit two factor secret code
-    async createUser(createUserData: {email: string, password: string}): Promise<User> {
+    async createUser(createUserData: CreateUserData): Promise<User> {
         const userToCreate: WithoutId<User> = {
             email: createUserData.email,
             password: createUserData.password,
-            two_factor_secret: "some secret",
-            two_factor_enabled: false
+            twoFactorSecret: "some secret",
+            twoFactorEnabled: false
         };
         return await this.userDao.createUser(userToCreate);
     }
@@ -25,4 +25,9 @@ export class UserLogic {
         if(!retrievedUser) throw new BadRequest("User Not Found");
         return retrievedUser;
     }
+}
+
+export interface CreateUserData {
+    email: string,
+    password: string
 }

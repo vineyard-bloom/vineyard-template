@@ -1,4 +1,4 @@
-import {User} from "../backing-services/model/model-types";
+import {User} from "../model/model-types";
 import {UserLogic} from "../logic/user-logic";
 import {Unauthorized} from "vineyard-lawn/source/errors";
 import {Request} from "vineyard-lawn";

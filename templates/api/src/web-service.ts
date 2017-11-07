@@ -1,7 +1,7 @@
 import {Version} from 'vineyard-lawn'
 import {GenericWebService} from 'vineyard-village'
 import {Config, Village} from './village'
-import {Model} from "./backing-services/model/model";
+import {Model} from "./model/model";
 import {UserLogic} from "./logic/user-logic";
 import {EndpointInitializer} from "./endpoints/endpoint-initializer";
 
