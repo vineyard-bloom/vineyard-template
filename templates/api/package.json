@@ -8,12 +8,19 @@
   },
   "author": "",
   "dependencies": {
+    "@types/node": "^7.0.16",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "source-map-support": "0.5.0",
     "vineyard-ground": "vineyard-bloom/vineyard-ground",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn",
-    "vineyard-users": "vineyard-bloom/vineyard-users"
+    "vineyard-users": "vineyard-bloom/vineyard-users",
+    "vineyard-village": "vineyard-bloom/vineyard-village"
   },
   "devDependencies": {
-    "@types/node": "^7.0.16",
-    "source-map-support": "^0.4.15"
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
   }
 }
