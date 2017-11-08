@@ -1,5 +1,5 @@
 import {GenericVillage, CommonConfig, loadLabConfig, loadAndCheckConfig} from 'vineyard-village'
-import {UserDao} from "./model/user-dao";
+import {UserDao} from "./model/dao/user-dao";
 import {Model} from "./model/model";
 
 export interface LabConfig {

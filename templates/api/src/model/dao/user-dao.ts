@@ -1,5 +1,5 @@
 import {Collection} from "vineyard-ground";
-import {Seed, User, WithoutId} from "./model-types";
+import {Seed, User, WithoutId} from "../model-types";
 
 export class UserDao {
     private readonly userCollection: Collection<User>;

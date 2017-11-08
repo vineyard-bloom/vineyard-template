@@ -5,7 +5,9 @@
   "main": "scripts/api.js",
   "scripts": {
     "test": "find ./test/internal -name '*-test.js' | xargs mocha",
-    "extTest": "find ./test/external -name '*-test.js' | xargs mocha"
+    "extTest": "find ./test/external -name '*-test.js' | xargs mocha",
+    "dev": "node scripts/api.js",
+    "resetDb": "node scripts/fixture.js init"
   },
   "author": "",
   "dependencies": {

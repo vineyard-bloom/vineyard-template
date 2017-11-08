@@ -1,4 +1,4 @@
-import {UserDao} from "../model/user-dao";
+import {UserDao} from "../model/dao/user-dao";
 import {User, WithoutId} from "../model/model-types";
 import {BadRequest} from "vineyard-lawn/source/errors";
 
