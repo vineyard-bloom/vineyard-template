@@ -4,12 +4,13 @@
 ## Running the Template For the First Time ##
 1. Copy the file /config/config-sample.json to a new file /config/config.json.
 2. In config.json add a random string to "cookies"->"secret".
-3. In config.json add the name of a database in "database" -> "database".
-	4. If that database doesn't yet exist, in the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
-5. Run `$yarn resetDb` which will add the vineyard tables (as well as the default user table included in this template) to your database. This command may hang after completion, exit with control+c.
-6. Run `$yarn`, which will acquire all the dependencies specified in package.json.
-6. To start the server `$yarn dev`.
-7. To run tests `$yarn test`.
+3. In config.json add the name of a database in "database" -> "database". Set "database" -> "devMode" to `true`.
+4. If the database name added about doesn't refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
+5. Run `$yarn`, which will acquire all the dependencies specified in package.json.
+6. Run `$tsc`, which will compile all of the typescript files.
+7. Run `$yarn resetDb` which will add the vineyard tables (as well as the default user table included in this template) to your database. This command may hang after completion, exit with control+c.
+8. To start the server `$yarn dev`.
+9. To run tests `$yarn test`.
 
 ## Root Directory Folders ##
 

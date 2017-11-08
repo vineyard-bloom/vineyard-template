@@ -11,6 +11,9 @@ export type CreateUserResponse = ApiUser;
 export type GetUserRequest = EmptyRequest
 export type GetUserResponse = ApiUser;
 
+
+
+
 export interface ApiUser {
     email: string
 }
