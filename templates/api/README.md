@@ -11,6 +11,7 @@
 7. Run `$yarn resetDb` which will add the vineyard tables (as well as the default user table included in this template) to your database. This command may hang after completion, exit with control+c.
 8. To start the server `$yarn dev`.
 9. To run tests `$yarn test`.
+10. **NOTE**: IF you are running the system locally or with http (not https) then in config.json and config-sample.json you need also to set `"api" -> "cookies" -> "cookie" -> "secure" = false`. 
 
 ## Root Directory Folders ##
 
