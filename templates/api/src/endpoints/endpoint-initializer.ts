@@ -55,7 +55,7 @@ export class EndpointInitializer {
                 method: Method.get,
                 path: "user",
                 action: this.userRequestHandler.getUser,
-                validator: this.validators.getUser
+                validator: this.validators.empty
             }
         ]
     }

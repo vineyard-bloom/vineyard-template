@@ -1,7 +1,7 @@
 import * as assert from "assert";
 
 export function assertEqualByData(ob1: any, ob2: any, ignoreProperties: string[] = []): void {
-    if(ob1 == ob2){
+    if(typeof ob1 != "object"){
         assert.equal(ob1, ob2);
         return;
     }
