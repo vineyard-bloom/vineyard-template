@@ -2,7 +2,7 @@ import {defaultServerInitiatilization} from "../../setup/internal-test-setup";
 import {CreateUserData} from "../../../src/logic/user-logic";
 import {randomCreateUserData} from "../../../fixtures/random-types";
 import {User} from "../../../src/model/model-types";
-import {assertEqualByData} from "../../helpers/assertion-helper";
+import {assertEqualByData} from "../../helpers/custom-assertions";
 import * as assert from "assert";
 
 const {village, model, webService, endpointInitializer} = defaultServerInitiatilization;
