@@ -3,7 +3,7 @@ import {ValidateFunction} from "ajv";
 import {WebService} from "../web-service";
 import {UserRequestHandler} from "../request-handlers/user-request-handler";
 import {TwoFactorEndpoints} from "vineyard-users/src/two-factor";
-import {Method} from "vineyard-lawn/source/types";
+import {Endpoint_Info, Method} from "vineyard-lawn/source/types";
 
 export class EndpointInitializer {
     private readonly webService: WebService;
@@ -35,7 +35,7 @@ export class EndpointInitializer {
         return this.validators;
     }
 
-    private getPublicEndpoints(): EndpointLiteral[] {
+    private getPublicEndpoints(): Endpoint_Info[] {
         return [
             this.twoFactorEndpoints.getNewSecret(),
             this.twoFactorEndpoints.verifyToken(),
@@ -49,7 +49,7 @@ export class EndpointInitializer {
         ]
     }
 
-    private getAuthorizedEndpoints(): EndpointLiteral[] {
+    private getAuthorizedEndpoints(): Endpoint_Info[] {
         return [
             {
                 method: Method.get,
@@ -59,11 +59,4 @@ export class EndpointInitializer {
             }
         ]
     }
-}
-
-export interface EndpointLiteral{
-    method: Method;
-    path: string;
-    action: (request: Request) => Promise<any>
-    validator: ValidateFunction
 }

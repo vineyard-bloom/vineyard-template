@@ -16,10 +16,10 @@
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "source-map-support": "0.5.0",
-    "vineyard-ground": "vineyard-bloom/vineyard-ground",
-    "vineyard-lawn": "vineyard-bloom/vineyard-lawn",
-    "vineyard-users": "vineyard-bloom/vineyard-users",
-    "vineyard-village": "vineyard-bloom/vineyard-village"
+    "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
+    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta",
+    "vineyard-users": "vineyard-bloom/vineyard-users#1.0.0-beta",
+    "vineyard-village": "vineyard-bloom/vineyard-village#1.0.0-beta"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
