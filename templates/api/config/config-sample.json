@@ -18,6 +18,7 @@
   "database": {
     "host": "localhost",
     "database": "",
+    "devMode": false,
     "username": "",
     "password": "",
     "dialect": "postgres"

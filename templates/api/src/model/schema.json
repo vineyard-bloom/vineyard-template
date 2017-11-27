@@ -1,0 +1,19 @@
+{
+  "User": {
+    "properties": {
+      "email": {
+        "type": "string",
+        "unique": true
+      },
+      "password": {
+        "type": "string"
+      },
+      "twoFactorSecret": {
+        "type": "string"
+      },
+      "twoFactorEnabled": {
+        "type": "bool"
+      }
+    }
+  }
+}
