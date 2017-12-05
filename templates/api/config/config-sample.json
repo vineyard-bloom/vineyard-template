@@ -8,10 +8,8 @@
     },
     "cookies": {
       "secret": "",
-      "cookie": {
-        "maxAge": 900000,
-        "secure": true
-      },
+      "maxAge": 900000,
+      "secure": true,
       "rolling": true
     }
   },
