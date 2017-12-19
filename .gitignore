@@ -6,3 +6,4 @@ yarn*
 .vscode
 config.json
 lab.json
+package-lock.json

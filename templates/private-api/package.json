@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "description": "",
+  "main": "scripts/api.js",
+  "scripts": {
+    "test": "find ./test/tests -name '*-test.js' | xargs mocha",
+    "dev": "node scripts/api",
+    "resetDb": "node scripts/fixture"
+  },
+  "author": "",
+  "dependencies": {
+    "@types/node": "^7.0.16",
+    "pg": "^7.4.0",
+    "reflect-metadata": "^0.1.10",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "source-map-support": "0.5.0",
+    "typeorm": "^0.1.9",
+    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
+  }
+}
