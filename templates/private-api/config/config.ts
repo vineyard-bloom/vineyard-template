@@ -11,6 +11,7 @@ export const localConfig: FullConfig = {
     username: "postgres",
     password: "dev",
     database: "typeorm",
-    synchronize: false,
+    synchronize: true,
+    logging: true
   }
 }

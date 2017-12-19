@@ -1,8 +1,8 @@
 require('source-map-support').install()
+import "reflect-metadata"
 import {WebClient} from "vineyard-lawn/lab"
 import {createVillage, Village} from "../../src/village"
-import {startApiServer} from "../../src/api/api-server"
-import "reflect-metadata"
+import {startApiServer} from "../../src/api"
 import {Pizza} from "../../src/model"
 import {assert} from "chai"
 import {Server} from "vineyard-lawn"
