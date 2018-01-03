@@ -1,4 +1,4 @@
-import {localConfig} from "../config/config"
+import {localConfig} from "../config/config-sample"
 import {PizzaLogic} from "./logic/pizza-logic"
 import {Connection} from "typeorm"
 import {PizzaDao} from "./model/pizza-dao"

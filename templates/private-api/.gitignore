@@ -4,4 +4,4 @@ node_modules
 yarn-*
 .idea
 .vscode
-config.ts
+config/config.ts
