@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "description": "",
   "main": "scripts/api.js",
+  "config": {"janus": "github:vineyard-bloom/janus-template"},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "find ./test -name '*-test.js' | xargs mocha",
+    "compile": "tsc | grep -v \"node_modules\"",
+    "janus": "mkdir -p target && node node_modules/.bin/janus-compile `pwd` && npm run compile",
+    "janusUpdate": "npm i vineyard-janus -f && npm run janus"
   },
   "author": "",
-  "dependencies": {},
+  "dependencies": {
+    "vineyard-janus": "$npm_package_config_janus"
+  },
   "devDependencies": {}
 }

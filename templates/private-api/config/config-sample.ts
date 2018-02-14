@@ -8,9 +8,9 @@ export const localConfig: FullConfig = {
     type: "postgres",
     host: "localhost",
     port: 5432,
-    username: "postgres",
-    password: "dev",
-    database: "typeorm",
+    username: "",
+    password: "",
+    database: "private_api_template",
     synchronize: true,
     logging: true
   }

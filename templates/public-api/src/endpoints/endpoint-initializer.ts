@@ -1,62 +1,23 @@
-import {Request} from "vineyard-lawn";
-import {ValidateFunction} from "ajv";
-import {WebService} from "../web-service";
-import {UserRequestHandler} from "../request-handlers/user-request-handler";
-import {TwoFactorEndpoints} from "vineyard-users/src/two-factor";
-import {Endpoint_Info, Method} from "vineyard-lawn/source/types";
+import { Server, Method, Request } from "vineyard-lawn"
+import { UserRequestHandler } from "../request-handlers/user-request-handler"
+import { Village } from "../village"
 
-export class EndpointInitializer {
-    private readonly webService: WebService;
-    private readonly validators: any;
-    private readonly twoFactorEndpoints: TwoFactorEndpoints;
+export function initializeEndpoints(server: Server, village: Village){
+  const emptyPreprocessor = (request: Request) => Promise.resolve(request)
 
-    //TODO: More handlers added here...
-    private readonly userRequestHandler: UserRequestHandler;
+  const userRequestHandler: UserRequestHandler = village.requestHandlers.userRequestHandler
 
-    constructor(webService: WebService){
-        this.webService = webService;
-        this.validators = webService.compileApiSchema(require('./request-validation.json'));
-        this.twoFactorEndpoints = new TwoFactorEndpoints(webService);
-        this.userRequestHandler = new UserRequestHandler(
-            webService.getUserLogic()
-        );
+  server.createEndpoints(emptyPreprocessor, [
+    {
+      method: Method.post,
+      path: "user",
+      action: userRequestHandler.createUser
+    },
+
+    {
+      method: Method.get,
+      path: "user",
+      action: userRequestHandler.getUser
     }
-
-    initalizeEndpoints(): void {
-        this.webService.createPublicEndpoints(this.getPublicEndpoints());
-        this.webService.createAuthorizedEndpoints(this.getAuthorizedEndpoints());
-    }
-
-    getUserRequestHandler(): UserRequestHandler{
-        return this.userRequestHandler;
-    }
-
-    getValidators(): any {
-        return this.validators;
-    }
-
-    private getPublicEndpoints(): Endpoint_Info[] {
-        return [
-            this.twoFactorEndpoints.getNewSecret(),
-            this.twoFactorEndpoints.verifyToken(),
-
-            {
-                method: Method.post,
-                path: "user",
-                action: this.userRequestHandler.createUser,
-                validator: this.validators.createUser
-            },
-        ]
-    }
-
-    private getAuthorizedEndpoints(): Endpoint_Info[] {
-        return [
-            {
-                method: Method.get,
-                path: "user",
-                action: this.userRequestHandler.getUser,
-                validator: this.validators.empty
-            }
-        ]
-    }
+  ])
 }

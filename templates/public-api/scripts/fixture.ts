@@ -1,12 +1,10 @@
 import {DevModeler} from "vineyard-ground/source/modeler";
 
 require('source-map-support').install()
-import {Village} from "../src/village";
-import {WebService} from "../src/web-service";
+import { createVillage } from "../src/village";
 
-const village = new Village();
-const model = village.getModel();
-const webService = new WebService(village);
+const village = createVillage();
+const model = village.model;
 
 const fixtureName = process.argv[2];
 const args = process.argv.slice(3);

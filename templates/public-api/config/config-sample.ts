@@ -1,4 +1,6 @@
-{
+import { FullConfig } from "./config-types"
+
+const sampleConfig: FullConfig = {
   "api": {
     "port": 3000,
     "ssl": {
@@ -9,14 +11,14 @@
     "cookies": {
       "secret": "",
       "maxAge": 900000,
-      "secure": true,
+      "secure": false,
       "rolling": true
     }
   },
   "database": {
     "host": "localhost",
     "database": "",
-    "devMode": false,
+    "devMode": true,
     "username": "",
     "password": "",
     "dialect": "postgres"
