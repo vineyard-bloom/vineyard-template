@@ -1,8 +1,5 @@
-require('source-map-support').install()
-import {Village} from "../src/village"
-import {WebService} from "../src/web-service"
+import { startApiServer } from "../src/api/api-server"
+import { createVillage } from "../src/village"
 
-const village = new Village()
-const webService = new WebService(village)
-
-webService.start()
+const village = createVillage()
+startApiServer(village)

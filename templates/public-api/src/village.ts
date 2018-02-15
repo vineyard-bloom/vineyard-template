@@ -1,31 +1,26 @@
-import {GenericVillage, CommonConfig, loadLabConfig, loadAndCheckConfig} from 'vineyard-village'
-import {UserDao} from "./model/dao/user-dao";
-import {Model} from "./model/model";
+import { realConfig } from "../config/config"
+import { createModel, Model } from "./model/index"
+import { FullConfig } from "../config/config-types"
+import { createLogic, Logic } from "./logic/index"
+import { createRequestHandlers, RequestHandlers } from "./request-handlers/index"
 
-export interface LabConfig {
-
+export interface Village {
+  config: FullConfig
+  model: Model
+  logic: Logic
+  requestHandlers: RequestHandlers
 }
 
-export interface Config extends CommonConfig {
 
-}
+export function createVillage(): Village {
+  const model = createModel(realConfig.database)
+  const logic = createLogic(model)
+  const requestHandlers = createRequestHandlers(logic)
 
-export class Village extends GenericVillage<Model, Config> {
-    labConfig: LabConfig = loadLabConfig<LabConfig>();
-
-    private readonly userDao: UserDao;
-
-    constructor() {
-        super();
-
-        this.userDao = new UserDao(this.getModel().User);
-    }
-
-    getLabConfig(): LabConfig {
-        return this.labConfig;
-    }
-
-    getUserDao(): UserDao {
-        return this.userDao;
-    }
+  return {
+    config: realConfig,
+    model: model,
+    logic: logic,
+    requestHandlers: requestHandlers
+  }
 }
