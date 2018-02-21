@@ -1,15 +1,24 @@
-//TODO: Edit this interface for specific uses
-export interface User extends HasId {
-    email: string //or username is required
-    password: string //required
-    twoFactorSecret: string //required for 2fa
-    twoFactorEnabled: boolean //required for 2fa
-    //can add any additional fields here and to user table def in schema
+// TODO: Edit this interface for specific uses
+
+export interface Pizza extends HasId {
+  type: PizzaType,
+  size: number,
+  toppings: Topping[]
 }
 
-export type Seed<T extends HasId> = T | string;
+export interface Topping extends HasId {
+  name: string,
+  pizzaId: UUID
+}
 
-export interface HasId { id: string; }
-export type WithoutId<T extends HasId> = Omit<T, "id">
+export enum PizzaType {
+  cheese,
+  red,
+  white
+}
 
+export type UUID = string
+export type Seed<T extends HasId> = T | string
 
+export interface HasId { id: string }
+export type WithoutId<T extends HasId> = Omit<T, 'id'>

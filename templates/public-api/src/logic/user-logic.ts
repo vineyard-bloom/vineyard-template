@@ -1,11 +1,11 @@
-import {UserDao} from "../model/dao/user-dao";
+import {PizzaDao} from "../model/dao/user-dao";
 import {User, WithoutId} from "../model/model-types";
 import {BadRequest} from "vineyard-lawn/source/errors";
 
 export class UserLogic {
-    private readonly userDao: UserDao;
+    private readonly userDao: PizzaDao;
 
-    constructor(userDao: UserDao){
+    constructor(userDao: PizzaDao){
         this.userDao = userDao;
     }
 

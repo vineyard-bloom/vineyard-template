@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "tslint-config-standard",
+    "tslint-no-unused-expression-chai"
+  ],
+  "rules": {
+    "no-unused-variable": true,
+    "curly": [
+      true,
+      "ignore-same-line"
+    ]
+  },
+  "exclude": ["node_modules"]
+}

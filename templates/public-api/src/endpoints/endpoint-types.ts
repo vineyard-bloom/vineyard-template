@@ -1,4 +1,4 @@
-import {Request} from "vineyard-lawn";
+import { Request } from 'vineyard-lawn'
 
 export interface CreateUserRequest extends Request {
     data: {
