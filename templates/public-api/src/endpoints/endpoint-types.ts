@@ -1,27 +1,32 @@
 import { Request } from 'vineyard-lawn'
+import { PizzaType, UUID } from '../model/model-types'
 
-export interface CreateUserRequest extends Request {
-    data: {
-        email: string,
-        password: string
-    }
+export interface CreatePizzaRequest extends Request {
+  data: {
+    type: PizzaType,
+    size: number
+  }
 }
-export type CreateUserResponse = ApiUser;
+export type CreatePizzaResponse = ApiPizza
 
-export type GetUserRequest = EmptyRequest
-export type GetUserResponse = ApiUser;
+export interface GetPizzaRequest extends Request {
+  data: {
+    pizzaId: UUID
+  }
+}
+export type GetPizzaResponse = ApiPizza
 
-
-
-
-export interface ApiUser {
-    email: string
+export interface ApiPizza {
+  id: UUID
+  type: PizzaType,
+  size: number,
+  price: number
 }
 
 export interface EmptyRequest extends Request {
-    readonly data: Empty
+  readonly data: Empty
 }
 
 export interface Empty {
-    _?: undefined
+  _?: undefined
 }

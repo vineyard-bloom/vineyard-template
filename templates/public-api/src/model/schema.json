@@ -6,16 +6,9 @@
       },
       "size": {
         "type": "int"
-      }
-    }
-  },
-  "Topping": {
-    "properties": {
-      "name": {
-        "type": "string"
       },
-      "pizzaId": {
-        "type": "Pizza"
+      "price": {
+        "type": "float"
       }
     }
   }

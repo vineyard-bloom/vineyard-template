@@ -1,33 +1,35 @@
-import {PizzaDao} from "../model/dao/user-dao";
-import {User, WithoutId} from "../model/model-types";
-import {BadRequest} from "vineyard-lawn/source/errors";
+import { PizzaDao } from '../model/dao/user-dao'
+import { Pizza, PizzaType, WithoutId } from '../model/model-types'
+import { BadRequest } from 'vineyard-lawn/source/errors'
 
-export class UserLogic {
-    private readonly userDao: PizzaDao;
+export class PizzaLogic {
+  private readonly pizzaDao: PizzaDao
+  private readonly pizzaPrices: Map<PizzaType, number>
 
-    constructor(userDao: PizzaDao){
-        this.userDao = userDao;
+  constructor (pizzaDao: PizzaDao, pizzaPrices: Map<PizzaType, number>) {
+    this.pizzaDao = pizzaDao
+    this.pizzaPrices = pizzaPrices
+  }
+
+  // TODO: edit two factor secret code
+  async createPizza (createUserData: CreatePizzaData): Promise<Pizza> {
+    const { type, size } = createUserData
+    const pizzaToCreate: WithoutId<Pizza> = {
+      type,
+      size,
+      price: this.calculatePrice(type, size)
     }
+    return this.pizzaDao.createPizza(pizzaToCreate)
+  }
 
-    //TODO: edit two factor secret code
-    async createUser(createUserData: CreateUserData): Promise<User> {
-        const userToCreate: WithoutId<User> = {
-            email: createUserData.email,
-            password: createUserData.password,
-            twoFactorSecret: "some secret",
-            twoFactorEnabled: false
-        };
-        return await this.userDao.createUser(userToCreate);
-    }
+  async getPizza (pizzaId: string): Promise<Pizza> {
+    return this.pizzaDao.getPizza(pizzaId)
+  }
 
-    async getUser(userId: string): Promise<User> {
-        const retrievedUser = await this.userDao.getUser(userId);
-        if(!retrievedUser) throw new BadRequest("User Not Found");
-        return retrievedUser;
-    }
+  private calculatePrice (type: PizzaType, size: number): number {
+    const pricePerSlice = this.pizzaPrices.get(type) || 0
+    return pricePerSlice * size
+  }
 }
 
-export interface CreateUserData {
-    email: string,
-    password: string
-}
+export type CreatePizzaData = Omit<WithoutId<Pizza>, 'price'>

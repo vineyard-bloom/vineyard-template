@@ -3,12 +3,7 @@
 export interface Pizza extends HasId {
   type: PizzaType,
   size: number,
-  toppings: Topping[]
-}
-
-export interface Topping extends HasId {
-  name: string,
-  pizzaId: UUID
+  price: number
 }
 
 export enum PizzaType {

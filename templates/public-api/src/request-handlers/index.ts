@@ -1,12 +1,12 @@
-import { configureUserRequestHandler, UserRequestHandler } from "./user-request-handler"
-import { Logic } from "../logic/index"
+import { configurePizzaRequestHandler, PizzaRequestHandler } from './user-request-handler'
+import { Logic } from '../logic/index'
 
 export interface RequestHandlers {
-  userRequestHandler: UserRequestHandler
+  pizzaRequestHandler: PizzaRequestHandler
 }
 
-export function createRequestHandlers(logic: Logic): RequestHandlers {
+export function createRequestHandlers (logic: Logic): RequestHandlers {
   return {
-    userRequestHandler: configureUserRequestHandler(logic.userLogic)
+    pizzaRequestHandler: configurePizzaRequestHandler(logic.pizzaLogic)
   }
 }

@@ -1,8 +1,8 @@
-import { realConfig } from "../config/config"
-import { createModel, Model } from "./model/index"
-import { FullConfig } from "../config/config-types"
-import { createLogic, Logic } from "./logic/index"
-import { createRequestHandlers, RequestHandlers } from "./request-handlers/index"
+import { realConfig } from '../config/config'
+import { createModel, Model } from './model/index'
+import { FullConfig } from '../config/config-types'
+import { createLogic, Logic } from './logic/index'
+import { createRequestHandlers, RequestHandlers } from './request-handlers/index'
 
 export interface Village {
   config: FullConfig
@@ -11,10 +11,9 @@ export interface Village {
   requestHandlers: RequestHandlers
 }
 
-
-export function createVillage(): Village {
+export function createVillage (backingServiceOverrides?: any): Village {
   const model = createModel(realConfig.database)
-  const logic = createLogic(model)
+  const logic = createLogic(model, realConfig)
   const requestHandlers = createRequestHandlers(logic)
 
   return {

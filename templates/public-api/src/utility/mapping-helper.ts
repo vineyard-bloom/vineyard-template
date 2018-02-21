@@ -1,6 +1,6 @@
-import {User} from "../model/model-types";
-import {ApiUser} from "../endpoints/endpoint-types";
+import { Pizza } from '../model/model-types'
+import { ApiPizza } from '../endpoints/endpoint-types'
 
-export function mapUserToApiUser(user: User): ApiUser {
-    return {email: user.email};
+export function mapPizzaToApiPizza (pizza: Pizza): ApiPizza {
+  return pizza
 }

@@ -1,10 +1,12 @@
-import {User, WithoutId} from "../src/model/model-types";
-import {CreateUserData} from "../src/logic/user-logic";
-import {getRandomEmail, getRandomString} from "./random-helpers";
+import { PizzaType, WithoutId } from '../src/model/model-types'
+import { CreatePizzaData } from '../src/logic/user-logic'
+import {
+  getRandomEnumValue, getRandomIntInclusive
+} from './random-helpers'
 
-export function randomCreateUserData(): CreateUserData {
-    return {
-        email: getRandomEmail(),
-        password: getRandomString(12)
-    }
+export function randomCreatePizzaData (): CreatePizzaData {
+  return {
+    type: getRandomEnumValue(PizzaType),
+    size: getRandomIntInclusive(8, 16)
+  }
 }

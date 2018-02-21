@@ -1,23 +1,23 @@
-import { Server, Method, Request } from "vineyard-lawn"
-import { UserRequestHandler } from "../request-handlers/user-request-handler"
-import { Village } from "../village"
+import { Server, Method, Request } from 'vineyard-lawn'
+import { PizzaRequestHandler } from '../request-handlers/user-request-handler'
+import { Village } from '../village'
 
-export function initializeEndpoints(server: Server, village: Village){
+export function initializeEndpoints (server: Server, village: Village) {
   const emptyPreprocessor = (request: Request) => Promise.resolve(request)
 
-  const userRequestHandler: UserRequestHandler = village.requestHandlers.userRequestHandler
+  const pizzaRequestHandler: PizzaRequestHandler = village.requestHandlers.pizzaRequestHandler
 
   server.createEndpoints(emptyPreprocessor, [
     {
       method: Method.post,
-      path: "user",
-      action: userRequestHandler.createUser
+      path: 'pizza',
+      action: pizzaRequestHandler.createPizza
     },
 
     {
       method: Method.get,
-      path: "user",
-      action: userRequestHandler.getUser
+      path: 'pizza',
+      action: pizzaRequestHandler.getPizza
     }
   ])
 }

@@ -1,3 +1,5 @@
+import { PizzaType } from '../src/model/model-types'
+
 export interface ApiConfig {
   port: number,
   ssl: {
@@ -23,6 +25,7 @@ export interface DatabaseConfig {
 }
 
 export interface FullConfig {
+  pizzaPrices: Map<PizzaType, number>
   api: ApiConfig
   database: DatabaseConfig
 }
