@@ -1,5 +1,5 @@
-import { PizzaLogic } from './user-logic'
-import { PizzaDao } from '../model/dao/user-dao'
+import { PizzaLogic } from './pizza-logic'
+import { PizzaDao } from '../model/dao/pizza-dao'
 import { Model } from '../model/index'
 import { FullConfig } from '../../config/config-types'
 

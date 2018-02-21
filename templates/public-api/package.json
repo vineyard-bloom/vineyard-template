@@ -4,7 +4,7 @@
   "description": "",
   "main": "scripts/api.js",
   "scripts": {
-    "test": "find ./test/internal -name '*-test.js' | xargs mocha",
+    "test": "find ./test/full-automated -name '*-test.js' | xargs mocha",
     "dev": "node scripts/api.js",
     "resetDb": "node scripts/fixture.js init"
   },

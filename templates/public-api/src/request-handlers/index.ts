@@ -1,4 +1,4 @@
-import { configurePizzaRequestHandler, PizzaRequestHandler } from './user-request-handler'
+import { configurePizzaRequestHandler, PizzaRequestHandler } from './pizza-request-handler'
 import { Logic } from '../logic/index'
 
 export interface RequestHandlers {

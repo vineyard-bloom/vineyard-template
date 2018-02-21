@@ -1,5 +1,5 @@
 import { PizzaType, WithoutId } from '../src/model/model-types'
-import { CreatePizzaData } from '../src/logic/user-logic'
+import { CreatePizzaData } from '../src/logic/pizza-logic'
 import {
   getRandomEnumValue, getRandomIntInclusive
 } from './random-helpers'

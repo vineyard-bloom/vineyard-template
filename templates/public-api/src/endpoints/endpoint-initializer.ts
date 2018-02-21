@@ -1,5 +1,5 @@
 import { Server, Method, Request } from 'vineyard-lawn'
-import { PizzaRequestHandler } from '../request-handlers/user-request-handler'
+import { PizzaRequestHandler } from '../request-handlers/pizza-request-handler'
 import { Village } from '../village'
 
 export function initializeEndpoints (server: Server, village: Village) {
