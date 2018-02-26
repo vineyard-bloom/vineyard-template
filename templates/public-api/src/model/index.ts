@@ -1,15 +1,15 @@
-import {User} from "./model-types";
-import {Collection} from "vineyard-ground/source/collection";
-import { SequelizeClient, DatabaseClient, DevModeler, Modeler } from "vineyard-ground"
-import { FullConfig } from "../../config/config-types"
+import { Pizza } from './model-types'
+import { Collection } from 'vineyard-ground/source/collection'
+import { SequelizeClient, DatabaseClient, DevModeler, Modeler } from 'vineyard-ground'
+import { FullConfig } from '../../config/config-types'
 
 export interface Model {
-    User: Collection<User>
+  Pizza: Collection<Pizza>
 
-    ground: Modeler
+  ground: Modeler
 }
 
-export function createModel(
+export function createModel (
   dbConfig: FullConfig['database'],
   schema: any = require('./schema.json'),
   client: DatabaseClient = new SequelizeClient(dbConfig)
@@ -20,6 +20,6 @@ export function createModel(
 
   return Object.assign({
     ground: modeler,
-    db: modeler.getLegacyDatabaseInterface(),
+    db: modeler.getLegacyDatabaseInterface()
   }, modeler.collections) as any
 }

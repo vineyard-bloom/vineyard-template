@@ -4,8 +4,7 @@
   "description": "",
   "main": "scripts/api.js",
   "scripts": {
-    "test": "find ./test/internal -name '*-test.js' | xargs mocha",
-    "extTest": "find ./test/external -name '*-test.js' | xargs mocha",
+    "test": "find ./test/full-automated -name '*-test.js' | xargs mocha",
     "dev": "node scripts/api.js",
     "resetDb": "node scripts/fixture.js init"
   },
@@ -23,6 +22,12 @@
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
     "chai": "^4.1.2",
-    "mocha": "^3.5.3"
+    "mocha": "^3.5.3",
+    "speakeasy": "^2.0.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "tslint-no-unused-expression-chai": "^0.0.3",
+    "typescript": "^2.5.3"
   }
 }

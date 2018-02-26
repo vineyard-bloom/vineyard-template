@@ -1,18 +1,14 @@
 {
-  "User": {
+  "Pizza": {
     "properties": {
-      "email": {
-        "type": "string",
-        "unique": true
+      "type": {
+        "type": "int"
       },
-      "password": {
-        "type": "string"
+      "size": {
+        "type": "int"
       },
-      "twoFactorSecret": {
-        "type": "string"
-      },
-      "twoFactorEnabled": {
-        "type": "bool"
+      "price": {
+        "type": "float"
       }
     }
   }

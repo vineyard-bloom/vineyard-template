@@ -1,15 +1,16 @@
-import { UserLogic } from "./user-logic"
-import { UserDao } from "../model/dao/user-dao"
-import { Model } from "../model/index"
+import { PizzaLogic } from './pizza-logic'
+import { PizzaDao } from '../model/dao/pizza-dao'
+import { Model } from '../model/index'
+import { FullConfig } from '../../config/config-types'
 
 export interface Logic {
-  userLogic: UserLogic
+  pizzaLogic: PizzaLogic
 }
 
-export function createLogic(model: Model): Logic {
-  const userDao = new UserDao(model.User)
+export function createLogic (model: Model, config: FullConfig): Logic {
+  const pizzaDao = new PizzaDao(model.Pizza)
 
   return {
-    userLogic: new UserLogic(userDao)
+    pizzaLogic: new PizzaLogic(pizzaDao, config.pizzaPrices)
   }
 }

@@ -1,18 +1,29 @@
 {
   "empty": {
   },
-  "createUser": {
+  "createPizza": {
     "properties": {
-      "email": {
-        "$ref": "vineyard-users#email"
+      "type": {
+        "type": "number"
       },
-      "password": {
-        "$ref": "vineyard-users#password"
+      "size": {
+        "type": "number"
       }
     },
     "required": [
-      "username",
-      "password"
+      "type",
+      "size"
+    ]
+  },
+  "getPizza": {
+    "properties": {
+      "pizzaId": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "required": [
+      "pizzaId"
     ]
   }
 }
