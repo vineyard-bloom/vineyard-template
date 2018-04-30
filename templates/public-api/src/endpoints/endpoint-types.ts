@@ -18,7 +18,7 @@ export type GetPizzaResponse = ApiPizza
 
 export interface ApiPizza {
   id: UUID
-  type: PizzaType,
+  type: string,
   size: number,
   price: number
 }

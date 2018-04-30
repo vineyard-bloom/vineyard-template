@@ -1,6 +1,8 @@
 // TODO: Edit this interface for specific uses
+import { DbRecord, UUID } from 'vineyard-data/src/core-types'
 
-export interface Pizza extends HasId {
+export interface Pizza {
+  id: UUID,
   type: PizzaType,
   size: number,
   price: number
@@ -11,9 +13,3 @@ export enum PizzaType {
   red,
   white
 }
-
-export type UUID = string
-export type Seed<T extends HasId> = T | string
-
-export interface HasId { id: string }
-export type WithoutId<T extends HasId> = Omit<T, 'id'>

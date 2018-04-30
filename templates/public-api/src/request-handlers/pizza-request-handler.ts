@@ -1,7 +1,10 @@
 import { PizzaLogic } from '../logic/pizza-logic'
-import { CreatePizzaRequest, CreatePizzaResponse, GetPizzaRequest, GetPizzaResponse } from '../endpoints/endpoint-types'
-import { mapPizzaToApiPizza } from '../utility/mapping-helper'
-import { Unauthorized, Request } from 'vineyard-lawn'
+import {
+  ApiPizza, CreatePizzaRequest, CreatePizzaResponse, GetPizzaRequest,
+  GetPizzaResponse
+} from '../endpoints/endpoint-types'
+import { Request } from 'vineyard-lawn'
+import { Pizza } from '../model/model-types'
 
 export interface PizzaRequestHandler {
   createPizza: (req: CreatePizzaRequest) => Promise<CreatePizzaResponse>
@@ -27,9 +30,16 @@ export const getPizza: (pizzaLogic: PizzaLogic, req: GetPizzaRequest) => Promise
     return mapPizzaToApiPizza(retrievedPizza)
   }
 
-// Auth is done at the request handler level
-// export function getLoggedInUserId (req: Request): string {
-//   const userId: string = req.session.user
-//   if (userId) return userId
-//   throw new Unauthorized()
-// }
+export function pullData<T extends Request> (t: T): Promise<T['data']> {
+  return Promise.resolve(t.data)
+}
+
+export function mapPizzaToApiPizza (pizza: Pizza): Promise<ApiPizza> {
+  const { id, size, price, type } = pizza
+  return Promise.resolve({
+    id,
+    size,
+    price,
+    type: `pizza type: ${type.toString()}`
+  })
+}

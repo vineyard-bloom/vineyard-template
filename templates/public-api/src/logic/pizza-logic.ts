@@ -1,28 +1,28 @@
-import { PizzaDao } from '../model/dao/pizza-dao'
-import { Pizza, PizzaType, WithoutId } from '../model/model-types'
+import { Pizza, PizzaType } from '../model/model-types'
+import { StrictCollection } from 'vineyard-data'
+import { Omit } from 'vineyard-data/src/core-types'
 
 export class PizzaLogic {
-  private readonly pizzaDao: PizzaDao
+  private readonly pizzaCollection: StrictCollection<Pizza, 'id'>
   private readonly pizzaPrices: Map<PizzaType, number>
 
-  constructor (pizzaDao: PizzaDao, pizzaPrices: Map<PizzaType, number>) {
-    this.pizzaDao = pizzaDao
+  constructor (pizzaCollection: StrictCollection<Pizza, 'id'>, pizzaPrices: Map<PizzaType, number>) {
+    this.pizzaCollection = pizzaCollection
     this.pizzaPrices = pizzaPrices
   }
 
-  // TODO: edit two factor secret code
   async createPizza (createUserData: CreatePizzaData): Promise<Pizza> {
     const { type, size } = createUserData
-    const pizzaToCreate: WithoutId<Pizza> = {
+    const pizzaToCreate = {
       type,
       size,
       price: this.calculatePrice(type, size)
     }
-    return this.pizzaDao.createPizza(pizzaToCreate)
+    return this.pizzaCollection.create(pizzaToCreate)
   }
 
   async getPizza (pizzaId: string): Promise<Pizza> {
-    return this.pizzaDao.getPizza(pizzaId)
+    return this.pizzaCollection.get(pizzaId)
   }
 
   private calculatePrice (type: PizzaType, size: number): number {
@@ -31,4 +31,4 @@ export class PizzaLogic {
   }
 }
 
-export type CreatePizzaData = Omit<WithoutId<Pizza>, 'price'>
+export type CreatePizzaData = Omit<Pizza, 'price' | 'id'>

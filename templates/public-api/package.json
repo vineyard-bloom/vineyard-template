@@ -6,7 +6,10 @@
   "scripts": {
     "test": "find ./test/full-automated -name '*-test.js' | xargs mocha",
     "dev": "node scripts/api.js",
-    "resetDb": "node scripts/fixture.js init"
+    "resetDb": "node scripts/fixture.js init",
+    "compile": "tsc | grep -v \"node_modules\"",
+    "janus": "mkdir -p target && node node_modules/.bin/janus-compile `pwd` && npm run compile",
+    "janusUpdate": "yarn upgrade vineyard-janus -f && npm run janus"
   },
   "author": "",
   "dependencies": {
@@ -15,7 +18,10 @@
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "source-map-support": "0.5.0",
+    "vineyard-data": "vineyard-bloom/vineyard-data#newTypes",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
+    "vineyard-janus": "vineyard-bloom/janus-template#server-template",
+    "vineyard-janus-template": "vineyard-bloom/janus-template#server-template",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
   "devDependencies": {
