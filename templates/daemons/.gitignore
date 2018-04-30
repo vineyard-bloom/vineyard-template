@@ -1,7 +1,0 @@
-*.js.map
-*.js
-node_modules
-yarn-*
-.idea
-.vscode
-config.json
