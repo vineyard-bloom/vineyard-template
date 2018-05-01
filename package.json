@@ -1,18 +1,36 @@
 {
-  "name": "vineyard-server-template",
+  "name": "",
   "version": "0.1.0",
   "description": "",
   "main": "scripts/api.js",
-  "config": {"janus": "github:vineyard-bloom/janus-template"},
   "scripts": {
-    "test": "find ./test -name '*-test.js' | xargs mocha",
-    "compile": "tsc | grep -v \"node_modules\"",
-    "janus": "mkdir -p target && node node_modules/.bin/janus-compile `pwd` && npm run compile",
-    "janusUpdate": "npm i vineyard-janus -f && npm run janus"
+    "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
+    "dev": "node scripts/api.js",
+    "resetDb": "node scripts/fixture.js init",
+    "compile": "tsc | grep -v \"node_modules\""
   },
   "author": "",
   "dependencies": {
-    "vineyard-janus": "$npm_package_config_janus"
+    "@types/axios": "^0.14.0",
+    "@types/node": "^7.0.16",
+    "@types/request-promise": "^4.1.39",
+    "axios": "^0.18.0",
+    "source-map-support": "0.5.0",
+    "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
+    "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
+    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/mocha": "^2.2.43",
+    "@types/node": "^7.0.5",
+    "chai": "^4.1.2",
+    "mocha": "^3.2.0",
+    "speakeasy": "^2.0.0",
+    "ts-node": "^6.0.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "tslint-no-unused-expression-chai": "^0.0.3",
+    "typescript": "^2.5.3"
+  }
 }

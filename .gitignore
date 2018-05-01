@@ -1,9 +1,8 @@
 *.js.map
 *.js
 node_modules
-yarn*
+yarn-*
 .idea
 .vscode
-config.json
-lab.json
-package-lock.json
+config/config.ts
+target
