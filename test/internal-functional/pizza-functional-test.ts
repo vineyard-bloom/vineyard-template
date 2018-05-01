@@ -1,13 +1,14 @@
 import * as assert from 'assert'
-import { startApiServer } from '../../../src/api/api-server'
+import { startApiServer } from '../../src/api/api-server'
 import { Server } from 'vineyard-lawn/source/server'
-import { assertEqualByData } from '../../helpers/custom-assertions'
-import { randomCreatePizzaData } from '../../../fixtures/random-types'
-import { createVillage, Village } from '../../../src/village'
+import { assertEqualByData } from '../helpers/custom-assertions'
+import { randomCreatePizzaData } from '../../fixtures/random-types'
+import { createVillage, Village } from '../../src/village'
 import { DevModeler } from 'vineyard-ground/source/modeler'
-
 const request = require('request-promise')
 
+// Internal functional tests should run without touching any live backing service (bitcoind, geth, etc) except the db.
+// They should be at an "integration" level, often an http request to an api endpoint or equivalently high level functionality.
 describe('pizza end 2 end', function () {
   let server: Server
   let rootUrl: string

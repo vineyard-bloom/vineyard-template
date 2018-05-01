@@ -1,12 +1,9 @@
 import { Request } from 'vineyard-lawn'
-import { PizzaType } from '../model/model-types'
 import { UUID } from 'vineyard-data/src/core-types'
+import { CreatePizzaData } from '../logic/pizza-logic'
 
 export interface CreatePizzaRequest extends Request {
-  data: {
-    type: PizzaType,
-    size: number
-  }
+  data: CreatePizzaData
 }
 export type CreatePizzaResponse = ApiPizza
 
