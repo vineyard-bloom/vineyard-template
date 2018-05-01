@@ -2,25 +2,12 @@
   "empty": {
   },
   "createPizza": {
-    "properties": {
-      "type": {
-        "type": "number"
-      },
-      "size": {
-        "type": "number"
-      }
-    },
-    "required": [
-      "type",
-      "size"
-    ]
+
+
   },
   "getPizza": {
     "properties": {
-      "pizzaId": {
-        "type": "string",
-        "format": "uuid"
-      }
+
     },
     "required": [
       "pizzaId"

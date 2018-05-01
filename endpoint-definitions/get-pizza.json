@@ -1,0 +1,40 @@
+{
+  "title": "Get Pizza",
+  "path": "/pizza",
+  "verb": "get",
+  "authorized": 0,
+  "request":{
+    "type": "object",
+    "properties": {
+      "pizzaId": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": false,
+    "required": ["pizzaId"]
+  },
+  "response":{
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "size": {
+        "type": "number"
+      },
+      "price": {
+        "type": "number"
+      }
+    },
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "type",
+      "size",
+      "price"
+    ]
+  }
+}

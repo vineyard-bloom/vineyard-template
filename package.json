@@ -7,7 +7,8 @@
     "test": "find ./test/full-automated -name '*-test.js' | xargs mocha",
     "dev": "node scripts/api.js",
     "resetDb": "node scripts/fixture.js init",
-    "compile": "tsc | grep -v \"node_modules\""
+    "compile": "tsc | grep -v \"node_modules\"",
+    "janus": "mkdir -p endpoint-definitions-generated && node node_modules/.bin/janus-compile-from-external-endpoint-definitions `pwd` && yarn compile"
   },
   "author": "",
   "dependencies": {
@@ -18,6 +19,7 @@
     "source-map-support": "0.5.0",
     "vineyard-data": "vineyard-bloom/vineyard-data#newTypes",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
+    "vineyard-janus": "vineyard-bloom/janus-template#server-template",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
   "devDependencies": {
