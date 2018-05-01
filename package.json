@@ -11,10 +11,10 @@
   },
   "author": "",
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/node": "^7.0.16",
     "@types/request-promise": "^4.1.39",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
+    "axios": "^0.18.0",
     "source-map-support": "0.5.0",
     "vineyard-data": "vineyard-bloom/vineyard-data#newTypes",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
