@@ -20,7 +20,7 @@ describe('pizza end 2 end', function () {
   })
 
   beforeEach(async () => {
-    await (village.model as any as DevModeler).regenerate()
+    await (village.model.ground as any as DevModeler).regenerate()
   })
 
   after(async () => {

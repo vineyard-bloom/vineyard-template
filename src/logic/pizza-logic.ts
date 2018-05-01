@@ -1,6 +1,6 @@
 import { Pizza, PizzaType } from '../model/model-types'
 import { StrictCollection } from 'vineyard-data'
-import { Omit } from 'vineyard-data/src/core-types'
+import { Omit, UUID } from 'vineyard-data/src/core-types'
 
 export class PizzaLogic {
   private readonly pizzaCollection: StrictCollection<Pizza, 'id'>
@@ -11,8 +11,8 @@ export class PizzaLogic {
     this.pizzaPrices = pizzaPrices
   }
 
-  async createPizza (createUserData: CreatePizzaData): Promise<Pizza> {
-    const { type, size } = createUserData
+  async createPizza (createPizzaData: CreatePizzaData): Promise<Pizza> {
+    const { type, size } = createPizzaData
     const pizzaToCreate = {
       type,
       size,
@@ -21,7 +21,7 @@ export class PizzaLogic {
     return this.pizzaCollection.create(pizzaToCreate)
   }
 
-  async getPizza (pizzaId: string): Promise<Pizza> {
+  async getPizza (pizzaId: UUID): Promise<Pizza> {
     return this.pizzaCollection.get(pizzaId)
   }
 
