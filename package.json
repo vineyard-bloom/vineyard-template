@@ -4,20 +4,20 @@
   "description": "",
   "main": "scripts/api.js",
   "scripts": {
-    "test": "find ./test/full-automated -name '*-test.js' | xargs mocha",
+    "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
     "dev": "node scripts/api.js",
     "resetDb": "node scripts/fixture.js init",
     "compile": "tsc | grep -v \"node_modules\"",
-    "janus": "mkdir -p endpoint-definitions-generated && node node_modules/.bin/janus-compile-from-external-endpoint-definitions `pwd` && yarn compile"
+    "endpoints": "node scripts/fixture.js endpoints `pwd`"
   },
   "author": "",
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/node": "^7.0.16",
     "@types/request-promise": "^4.1.39",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
+    "axios": "^0.18.0",
     "source-map-support": "0.5.0",
-    "vineyard-data": "vineyard-bloom/vineyard-data#newTypes",
+    "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
     "vineyard-janus": "vineyard-bloom/janus-template#server-template",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"

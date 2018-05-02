@@ -1,12 +1,12 @@
 import { Pizza, PizzaType } from '../model/model-types'
-import { StrictCollection } from 'vineyard-data'
 import { Omit, UUID } from 'vineyard-data/src/core-types'
+import { PizzaCollection } from '../model/index'
 
 export class PizzaLogic {
-  private readonly pizzaCollection: StrictCollection<Pizza, 'id'>
+  private readonly pizzaCollection: PizzaCollection
   private readonly pizzaPrices: Map<PizzaType, number>
 
-  constructor (pizzaCollection: StrictCollection<Pizza, 'id'>, pizzaPrices: Map<PizzaType, number>) {
+  constructor (pizzaCollection: PizzaCollection, pizzaPrices: Map<PizzaType, number>) {
     this.pizzaCollection = pizzaCollection
     this.pizzaPrices = pizzaPrices
   }
@@ -25,7 +25,7 @@ export class PizzaLogic {
     return this.pizzaCollection.get(pizzaId)
   }
 
-  private calculatePrice (type: PizzaType, size: number): number {
+  calculatePrice (type: PizzaType, size: number): number {
     const pricePerSlice = this.pizzaPrices.get(type) || 0
     return pricePerSlice * size
   }

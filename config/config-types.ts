@@ -24,8 +24,15 @@ export interface DatabaseConfig {
   dialect: string
 }
 
+export interface JanusEndpointsConfig {
+  sourceDir: string,
+  targetDir: string,
+  helpersFile: string
+}
+
 export interface FullConfig {
   pizzaPrices: Map<PizzaType, number>
   api: ApiConfig
   database: DatabaseConfig
+  janusEndpoints: JanusEndpointsConfig
 }

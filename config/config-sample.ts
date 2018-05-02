@@ -24,5 +24,10 @@ const sampleConfig: FullConfig = {
     'password': '',
     'dialect': 'postgres'
   },
+  'janusEndpoints': {
+    'sourceDir': '/src/endpoints/definitions',
+    'targetDir': '/src/endpoints/generated',
+    'helpersFile': '/src/endpoints/schema-validators.json'
+  },
   'pizzaPrices': new Map<PizzaType, number>()
 }

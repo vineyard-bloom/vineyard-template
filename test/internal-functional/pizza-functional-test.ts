@@ -1,13 +1,14 @@
 import * as assert from 'assert'
-import { startApiServer } from '../../../src/api/api-server'
+import { startApiServer } from '../../src/api/api-server'
 import { Server } from 'vineyard-lawn/source/server'
-import { assertEqualByData } from '../../helpers/custom-assertions'
-import { randomCreatePizzaData } from '../../../fixtures/random-types'
-import { createVillage, Village } from '../../../src/village'
+import { assertEqualByData } from '../helpers/custom-assertions'
+import { randomCreatePizzaData } from '../../fixtures/random-types'
+import { createVillage, Village } from '../../src/village'
 import { DevModeler } from 'vineyard-ground/source/modeler'
+import Axios from 'axios'
 
-const request = require('request-promise')
-
+// Internal functional tests should run without touching any live backing service (bitcoind, geth, etc) except the db.
+// They should be at an "integration" level, often an http request to an api endpoint or equivalently high level functionality.
 describe('pizza end 2 end', function () {
   let server: Server
   let rootUrl: string
@@ -29,14 +30,8 @@ describe('pizza end 2 end', function () {
 
   it('creates a pizza', async function () {
     const pizzaToCreate = randomCreatePizzaData()
-    const createPizzaOptions = {
-      method: 'POST',
-      uri: rootUrl + `pizza`,
-      json: true,
-      qs: {},
-      body: pizzaToCreate
-    }
-    const createdPizza = await request(createPizzaOptions)
+    const createdPizza = (await Axios.post(rootUrl + 'pizza', pizzaToCreate)).data
+
     assertEqualByData(pizzaToCreate, createdPizza, ['price', 'type'])
     assert(createdPizza.price)
     assert(createdPizza.type)
@@ -45,21 +40,9 @@ describe('pizza end 2 end', function () {
 
   it('gets a pizza', async function () {
     const pizzaToCreate = randomCreatePizzaData()
-    const createPizzaOptions = {
-      method: 'POST',
-      uri: rootUrl + `pizza`,
-      json: true,
-      body: pizzaToCreate
-    }
-    const createdPizza = await request(createPizzaOptions)
+    const createdPizza = (await Axios.post(rootUrl + 'pizza', pizzaToCreate)).data
 
-    const getPizzaOptions = {
-      method: 'GET',
-      uri: rootUrl + `pizza`,
-      json: true,
-      qs: { pizzaId: createdPizza.id }
-    }
-    const retrievedPizza = await request(getPizzaOptions)
+    const retrievedPizza = (await Axios.get(rootUrl + 'pizza', { params: { pizzaId: createdPizza.id } })).data
     assertEqualByData(retrievedPizza, createdPizza)
   })
 })

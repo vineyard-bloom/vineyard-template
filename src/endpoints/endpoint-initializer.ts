@@ -1,26 +1,15 @@
-import { Method, Request, Server } from 'vineyard-lawn'
+import { Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
-import { createPizza, getPizza } from './request-handlers'
+import { synthesizeApiActions } from './request-handlers'
+import { configureJsonSchemaGeneration } from 'vineyard-janus'
+import * as path from 'path'
 
 export function initializeEndpoints (server: Server, village: Village) {
   const emptyPreprocessor = (request: Request) => Promise.resolve(request)
-
-  const validators = server.compileApiSchema(require('../endpoints/request-validation.json'))
-  const { pizzaLogic } = village.logic
-
-  server.createEndpoints(emptyPreprocessor, [
-    {
-      method: Method.post,
-      path: 'pizza',
-      action: req => createPizza(pizzaLogic, req),
-      validator: validators.createPizza
-    },
-
-    {
-      method: Method.get,
-      path: 'pizza',
-      action: req => getPizza(pizzaLogic, req),
-      validator: validators.getPizza
-    }
-  ])
+  const { apiActions } = village
+  const { sourceDir, targetDir, helpersFile } = village.config.janusEndpoints
+  const prefix = path.join(__dirname, '..','..')
+  const { endpointDefinitions } = configureJsonSchemaGeneration(prefix + targetDir, prefix + sourceDir, prefix + helpersFile)
+  server.compileApiSchema({})
+  server.createEndpoints(emptyPreprocessor, synthesizeApiActions(apiActions, endpointDefinitions))
 }
