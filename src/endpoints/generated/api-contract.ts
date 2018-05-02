@@ -3,7 +3,7 @@ import {
 	GetPizzaRequest, 
 	CreatePizzaResponse, 
 	GetPizzaResponse 
-} from '/Users/aarongreenspan/IbN/VINEYARD/vineyard-server-template/src/endpoints/generated/endpoint-types'
+} from './endpoint-types'
 
 export interface ApiActions {
   createPizza: (req: CreatePizzaRequest) => Promise<CreatePizzaResponse>

@@ -3,9 +3,9 @@ import { FullConfig } from '../config/config-types'
 import { createLogic, Logic } from './logic/index'
 import { BackingServices, createBackingServices } from './backing-services/index'
 import { realConfig } from '../config/config'
-import { ApiActions } from '../endpoint-definitions-generated/api-contract'
-import { createApiActions, synthesizeApiActions } from './endpoints/request-handlers'
-import { configureJsonSchemaGeneration } from 'vineyard-janus'
+import { createApiActions } from './endpoints/request-handlers'
+import { ApiActions } from './endpoints/generated/api-contract'
+import { apiStub } from './endpoints/generated/api-stub'
 
 export interface Village {
   config: FullConfig
@@ -19,7 +19,7 @@ export function createVillage (config: FullConfig = realConfig, backingServiceOv
   const backingServices = createBackingServices(config, backingServiceOverrides)
   const model = createModel(config.database)
   const logic = createLogic(model, config)
-  const apiActions = createApiActions(logic)
+  const apiActions = config.janusEndpoints.stubMode ? apiStub : createApiActions(logic)
 
   return {
     config,

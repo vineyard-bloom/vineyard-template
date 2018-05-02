@@ -1,5 +1,5 @@
 {
-  "title": "Get Pizza",
+  "title": "GetPizza",
   "path": "/pizza",
   "verb": "get",
   "authorized": 0,

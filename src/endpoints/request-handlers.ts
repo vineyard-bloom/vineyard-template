@@ -1,9 +1,9 @@
 import { mapPizzaToApiPizza } from './mapping-helpers'
-import { ApiActions } from '../../endpoint-definitions-generated/api-contract'
 import { Logic } from '../logic/index'
-import { EndpointDefinition } from 'vineyard-janus/generators/parsing/endpoint-schema-parsing'
 import { EndpointInfo, Method } from 'vineyard-lawn/source/types'
 import { Request } from 'vineyard-lawn'
+import { ApiActions } from './generated/api-contract'
+import { EndpointDefinition } from 'vineyard-janus'
 
 export function createApiActions (logic: Logic): ApiActions {
   const { pizzaLogic } = logic
@@ -16,12 +16,20 @@ export function createApiActions (logic: Logic): ApiActions {
 export function synthesizeApiActions (apiActions: ApiActions, endpointDefinitions: EndpointDefinition[]): EndpointInfo[] {
   return endpointDefinitions.map(ed => {
     return {
-      method: Method.post,
+      method: mapJsonVerbToMethod[ed.verb],
       path: ed.path,
       action: extractActionByName(apiActions, ed.actionName),
       validator: ed.requestValidator as EndpointInfo['validator']
     }
   })
+}
+
+const mapJsonVerbToMethod: { [verb: string]: Method } = {
+  'get': Method.get,
+  'post': Method.post,
+  'delete': Method.delete,
+  'put': Method.put,
+  'patch': Method.patch
 }
 
 export function extractActionByName (apiActions: ApiActions, actionName: string): (req: Request) => Promise<any> {

@@ -2861,7 +2861,7 @@ vineyard-ground@vineyard-bloom/vineyard-ground#1.0.0-beta:
 
 vineyard-janus@vineyard-bloom/janus-template#server-template:
   version "0.1.0"
-  resolved "https://codeload.github.com/vineyard-bloom/janus-template/tar.gz/63605df2cae184b4e3dc173b2c3b90f26db4619b"
+  resolved "https://codeload.github.com/vineyard-bloom/janus-template/tar.gz/f035698a36594f01a5e095fe69da6a03d20d1ee3"
   dependencies:
     "@types/faker" "^4.1.2"
     "@types/node" "^7.0.16"

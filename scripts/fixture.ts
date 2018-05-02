@@ -3,6 +3,7 @@ import { DevModeler } from 'vineyard-ground/source/modeler'
 require('source-map-support').install()
 import { createVillage } from '../src/village'
 import { configureJsonSchemaGeneration } from 'vineyard-janus'
+import * as path from 'path'
 
 const village = createVillage()
 const model = village.model
@@ -16,9 +17,9 @@ const fixtures: any = {
   },
 
   endpoints: async () => {
-    const pwd = args[0]
+    const wd = path.join(__dirname, '..', 'src')
     const { sourceDir, targetDir, helpersFile } = village.config.janusEndpoints
-    const generator = await configureJsonSchemaGeneration(pwd + targetDir, pwd + sourceDir, pwd + helpersFile)
+    const generator = await configureJsonSchemaGeneration(wd + targetDir, wd + sourceDir, wd + helpersFile)
     await generator.compileAll()
   }
 }

@@ -1,7 +1,7 @@
-import { CreatePizzaRequest, GetPizzaRequest, CreatePizzaResponse, GetPizzaResponse } from '/Users/aarongreenspan/IbN/VINEYARD/vineyard-server-template/src/endpoints/generated/endpoint-types';
-/************************ -- Create Pizza -- *****************************/
-export declare function createPizzaRequestStub(): Promise<CreatePizzaRequest>;
+import { CreatePizzaRequest, GetPizzaRequest, CreatePizzaResponse, GetPizzaResponse } from './endpoint-types';
+/************************ -- CreatePizza -- *****************************/
+export declare function createPizzaRequestDataStub(): Promise<CreatePizzaRequest['data']>;
 export declare function createPizzaResponseStub(): Promise<CreatePizzaResponse>;
-/************************ -- Get Pizza -- *****************************/
-export declare function getPizzaRequestStub(): Promise<GetPizzaRequest>;
+/************************ -- GetPizza -- *****************************/
+export declare function getPizzaRequestDataStub(): Promise<GetPizzaRequest['data']>;
 export declare function getPizzaResponseStub(): Promise<GetPizzaResponse>;
