@@ -12,7 +12,6 @@
   },
   "author": "",
   "dependencies": {
-    "@types/axios": "^0.14.0",
     "@types/node": "^7.0.16",
     "@types/request-promise": "^4.1.39",
     "axios": "^0.18.0",

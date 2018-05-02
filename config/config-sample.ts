@@ -27,7 +27,8 @@ const sampleConfig: FullConfig = {
   'janusEndpoints': {
     'sourceDir': '/src/endpoints/definitions',
     'targetDir': '/src/endpoints/generated',
-    'helpersFile': '/src/endpoints/schema-validators.json'
+    'helpersFile': '/src/endpoints/schema-validators.json',
+    'stubMode': true
   },
   'pizzaPrices': new Map<PizzaType, number>()
 }
