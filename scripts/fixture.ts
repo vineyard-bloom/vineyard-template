@@ -19,7 +19,7 @@ const fixtures: any = {
   endpoints: async () => {
     const wd = path.join(__dirname, '..', 'src')
     const { sourceDir, targetDir, helpersFile } = village.config.janusEndpoints
-    const generator = await configureJsonSchemaGeneration(wd + targetDir, wd + sourceDir, wd + helpersFile)
+    const generator = configureJsonSchemaGeneration(wd + targetDir, wd + sourceDir, wd + helpersFile)
     await generator.compileAll()
   }
 }

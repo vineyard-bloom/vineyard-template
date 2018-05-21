@@ -7,7 +7,7 @@
     "type": "object",
     "properties": {
       "pizzaId": {
-        "type": "string"
+        "type": "validators#uuid"
       }
     },
     "additionalProperties": false,
@@ -17,7 +17,8 @@
     "type": "object",
     "properties": {
       "id": {
-        "type": "string"
+        "type": "string",
+        "format": "uuid"
       },
       "type": {
         "type": "string"

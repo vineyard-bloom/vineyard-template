@@ -10,5 +10,5 @@
       "ignore-same-line"
     ]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/endpoints/generated/*.ts"]
 }

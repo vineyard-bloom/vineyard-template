@@ -1,3 +1,7 @@
-import { ApiPizza } from './endpoint-types';
 import { Pizza } from '../model/model-types';
-export declare function mapPizzaToApiPizza(p: Pizza): Promise<ApiPizza>;
+export declare function mapPizzaToApiPizza(p: Pizza): Promise<{
+    id: string;
+    type: string;
+    size: number;
+    price: number;
+}>;
