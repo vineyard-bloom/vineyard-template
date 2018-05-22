@@ -1,4 +1,3 @@
-const speakeasy = require('speakeasy')
 const uuidv4 = require('uuid/v4')
 
 export function getRandomIntInclusive (min: number, max: number): number {
@@ -15,12 +14,12 @@ export function getRandomUUID (): string {
   return uuidv4()
 }
 
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 export function getRandomString (length: number): string {
   let text = ''
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
   for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
+    text += ALPHABET.charAt(Math.floor(Math.random() * ALPHABET.length))
   }
 
   return text
@@ -32,11 +31,6 @@ export function getRandomEmail (): string {
 
 export function getRandomBool (): boolean {
   return getRandomIntInclusive(0,1) > 0
-}
-
-export function getRandom2faSecret (): string {
-  const secret = speakeasy.generateSecret()
-  return speakeasy.base32
 }
 
 export function getRandomEnumKey (enumClass: any) {

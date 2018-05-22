@@ -27,7 +27,8 @@ export const testConfig: FullConfig = {
   'janusEndpoints': {
     'sourceDir': '/endpoints/definitions',
     'targetDir': '/endpoints/generated',
-    'stubMode': false
+    'stubMode': false,
+    'endpointForSchema': undefined
   },
   'pizzaPrices': new Map<PizzaType, number>([
     [PizzaType.cheese, 1],

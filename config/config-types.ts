@@ -28,7 +28,7 @@ export interface JanusEndpointsConfig {
   sourceDir: string,
   targetDir: string,
   stubMode: boolean,
-  endpointForSchema: string
+  endpointForSchema: string | undefined
 }
 
 export interface FullConfig {

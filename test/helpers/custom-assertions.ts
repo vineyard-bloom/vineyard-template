@@ -1,5 +1,6 @@
 import * as assert from 'assert'
 
+// Deep equals which by default ignores database fields
 export function assertEqualByData (ob1: any, ob2: any, ignoreProperties: string[] = []): void {
   if (typeof ob1 !== 'object' || typeof ob2 !== 'object') {
     assert.equal(ob1, ob2)
