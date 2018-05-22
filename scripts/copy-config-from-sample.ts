@@ -1,15 +1,14 @@
 import * as fs from 'fs'
-const readline = require('readline');
+const readline = require('readline')
 
 const lineReader = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-});
+})
 
-
-export function executeCopyIfYes() {
+export function executeCopyIfYes () {
   lineReader.question('This will wipe out any existing config.ts and config-test.ts. Are you sure you wish to proceed? Y/N\n', (answer: string) => {
-    if(['Y','y','yes','Yes'].indexOf(answer) > -1){
+    if (['Y','y','yes','Yes'].indexOf(answer) > -1) {
       console.log('OK, copying fresh config values.')
 
       const configSample = fs.readFileSync('./config/config-sample.ts').toString()
