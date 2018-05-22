@@ -27,7 +27,8 @@ export interface DatabaseConfig {
 export interface JanusEndpointsConfig {
   sourceDir: string,
   targetDir: string,
-  stubMode: boolean
+  stubMode: boolean,
+  endpointForSchema: string
 }
 
 export interface FullConfig {

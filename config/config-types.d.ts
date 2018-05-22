@@ -25,6 +25,7 @@ export interface JanusEndpointsConfig {
     sourceDir: string;
     targetDir: string;
     stubMode: boolean;
+    endpointForSchema: string;
 }
 export interface FullConfig {
     pizzaPrices: Map<PizzaType, number>;

@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
-    "dev": "node scripts/api.js",
+    "dev": "node scripts/start-api.js",
     "resetDb": "node scripts/fixture.js init",
     "compile": "tsc | grep -v \"node_modules\"",
     "endpoints": "node scripts/generate-endpoints-from-schema.js && yarn compile",
