@@ -7,35 +7,11 @@
     "type": "object",
     "properties": {
       "pizzaId": {
-        "type": "validators#uuid"
+        "$ref": "#/validators/uuid"
       }
     },
     "additionalProperties": false,
     "required": ["pizzaId"]
   },
-  "response":{
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string",
-        "format": "uuid"
-      },
-      "type": {
-        "type": "string"
-      },
-      "size": {
-        "type": "number"
-      },
-      "price": {
-        "type": "number"
-      }
-    },
-    "additionalProperties": false,
-    "required": [
-      "id",
-      "type",
-      "size",
-      "price"
-    ]
-  }
+  "response": { "allOf":[{ "$ref": "#/structures/pizza" }]}
 }

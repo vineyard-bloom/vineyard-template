@@ -1,0 +1,18 @@
+{
+  "title": "IndexPizza",
+  "path": "/pizzas",
+  "verb": "get",
+  "authorized": 0,
+  "request":{
+    "type": "object",
+    "properties": {
+    },
+    "additionalProperties": false
+  },
+  "response":{
+    "type": "array",
+    "items": {
+      "$ref": "#/structures/pizza"
+    }
+  }
+}

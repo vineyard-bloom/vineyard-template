@@ -28,5 +28,33 @@
       "type": "string",
       "pattern": "/^[a-z0-9]{10,20}$/i"
     }
+  },
+  "structures": {
+    "pizza" : {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/validators/uuid"
+        },
+        "type": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 16
+        },
+        "price": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "size",
+        "price"
+      ]
+    }
   }
 }

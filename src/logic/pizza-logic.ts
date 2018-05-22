@@ -25,6 +25,10 @@ export class PizzaLogic {
     return this.pizzaCollection.get(pizzaId)
   }
 
+  async indexPizza (): Promise<Pizza[]> {
+    return this.pizzaCollection.all()
+  }
+
   calculatePrice (type: PizzaType, size: number): number {
     const pricePerSlice = this.pizzaPrices.get(type) || 0
     return pricePerSlice * size

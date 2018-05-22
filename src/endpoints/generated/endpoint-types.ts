@@ -16,7 +16,7 @@ export interface CreatePizzaRequest extends Request {
 }
 
 
-export interface CreatePizzaResponse {
+export type CreatePizzaResponse = {
   id: string
   type: string
   size: number
@@ -33,9 +33,24 @@ export interface GetPizzaRequest extends Request {
 }
 
 
-export interface GetPizzaResponse {
+export type GetPizzaResponse = {
   id: string
   type: string
   size: number
   price: number
 }
+
+
+/************************ -- IndexPizza -- *****************************/
+	
+export interface IndexPizzaRequest extends Request {
+	data: {}
+}
+	
+
+export type IndexPizzaResponse = {
+  id: string
+  type: string
+  size: number
+  price: number
+}[]

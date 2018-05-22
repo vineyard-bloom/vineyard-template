@@ -20,27 +20,6 @@
     ]
   },
   "response":{
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      },
-      "size": {
-        "type": "number"
-      },
-      "price": {
-        "type": "number"
-      }
-    },
-    "additionalProperties": false,
-    "required": [
-      "id",
-      "type",
-      "size",
-      "price"
-    ]
+    "allOf": [{ "$ref": "#/structures/pizza" }]
   }
 }

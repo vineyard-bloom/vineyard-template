@@ -1,4 +1,4 @@
-import { mapPizzaToApiPizza } from './mapping-helpers'
+import { mapf, pizzaToApiPizza } from './mapping-helpers'
 import { Logic } from '../logic/index'
 import { EndpointInfo, Method } from 'vineyard-lawn/source/types'
 import { Request } from 'vineyard-lawn'
@@ -8,8 +8,9 @@ import { EndpointDefinition } from 'vineyard-janus'
 export function createApiActions (logic: Logic): ApiActions {
   const { pizzaLogic } = logic
   return {
-    createPizza: (req) => pizzaLogic.createPizza(req.data).then(mapPizzaToApiPizza),
-    getPizza: (req) => pizzaLogic.getPizza(req.data.pizzaId).then(mapPizzaToApiPizza)
+    createPizza: (req) => pizzaLogic.createPizza(req.data).then(pizzaToApiPizza),
+    getPizza: (req) => pizzaLogic.getPizza(req.data.pizzaId).then(pizzaToApiPizza),
+    indexPizza: (req) => pizzaLogic.indexPizza().then(mapf(pizzaToApiPizza))
   }
 }
 

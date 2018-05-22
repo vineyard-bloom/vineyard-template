@@ -1,7 +1,7 @@
 import { FullConfig } from './config-types'
 import { PizzaType } from '../src/model/model-types'
 
-const sampleConfig: FullConfig = {
+export const testConfig: FullConfig = {
   'api': {
     'port': 3000,
     'ssl': {
@@ -12,7 +12,7 @@ const sampleConfig: FullConfig = {
     'cookies': {
       'secret': '',
       'maxAge': 900000,
-      'secure': false,
+      'secure': true,
       'rolling': true
     }
   },
@@ -25,9 +25,13 @@ const sampleConfig: FullConfig = {
     'dialect': 'postgres'
   },
   'janusEndpoints': {
-    'sourceDir': '/src/endpoints/definitions',
-    'targetDir': '/src/endpoints/generated',
-    'stubMode': true
+    'sourceDir': '/endpoints/definitions',
+    'targetDir': '/endpoints/generated',
+    'stubMode': false
   },
-  'pizzaPrices': new Map<PizzaType, number>()
+  'pizzaPrices': new Map<PizzaType, number>([
+    [PizzaType.cheese, 1],
+    [PizzaType.red, 0.75],
+    [PizzaType.white, 1.25]
+  ])
 }

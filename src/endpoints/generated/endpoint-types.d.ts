@@ -11,21 +11,31 @@ export interface CreatePizzaRequest extends Request {
         size: number;
     };
 }
-export interface CreatePizzaResponse {
+export declare type CreatePizzaResponse = {
     id: string;
     type: string;
     size: number;
     price: number;
-}
+};
 /************************ -- GetPizza -- *****************************/
 export interface GetPizzaRequest extends Request {
     data: {
         pizzaId: string;
     };
 }
-export interface GetPizzaResponse {
+export declare type GetPizzaResponse = {
     id: string;
     type: string;
     size: number;
     price: number;
+};
+/************************ -- IndexPizza -- *****************************/
+export interface IndexPizzaRequest extends Request {
+    data: {};
 }
+export declare type IndexPizzaResponse = {
+    id: string;
+    type: string;
+    size: number;
+    price: number;
+}[];

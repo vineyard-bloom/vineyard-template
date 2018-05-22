@@ -2,13 +2,14 @@
 ---------
 
 ## Running the Template For the First Time ##
-1. Copy the file /config/config-sample.json to a new file /config/config.json.
-2. In config.json add a random string to "cookies"->"secret".
-3. In config.json add the name of a database in "database" -> "database". Set "database" -> "devMode" to `true`.
-4. If the database name added about doesn't refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
-5. Run `$yarn`, which will acquire all the dependencies specified in package.json.
-6. Run `$tsc`, which will compile all of the typescript files.
-7. Run `$yarn resetDb` which will add the vineyard tables (as well as the default user table included in this template) to your database. This command may hang after completion, exit with control+c.
+1. Run `$yarn initialStartUp`. This will..
+    1. install all dependencies
+    2. create your config.ts and config-test.ts configuration files.
+    3. compile your json-schema to typescript
+    4. kick off a watcher will re-compile your json-schema to typescript whenever json-schema is modified.
+2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`.
+3. If the database name added above doesn't yet refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
+7. Run `$yarn resetDb`. This will add the vineyard tables (as well as the default user table included in this template) to your database.
 8. To start the server `$yarn dev`.
 9. To run tests `$yarn test`.
 10. **NOTE**: IF you are running the system locally or with http (not https) then in config.json and config-sample.json you need also to set `"api" -> "cookies" -> "cookie" -> "secure" = false`. 
@@ -17,7 +18,7 @@
 
  - **/config**: Contains configuration read by the webapp.
  - **/fixtures**: Contains functions for generating random and stock data for server initialization and tests.
- - **/scripts**: Files to be run from cli with node. Includes api.js (starts servers) and fixture.js (resets db, loads db with fixtures), and possibly daemon startup scripts.
+ - **/scripts**: Files to be run from cli with node. Includes start-api.js (starts servers) and fixture.js (resets db, loads db with fixtures), and possibly daemon startup scripts.
  - **/src**: The app files.
  - **/test**: Tests for various app components.
 

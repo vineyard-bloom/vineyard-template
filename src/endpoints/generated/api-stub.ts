@@ -1,6 +1,7 @@
 import {
 	createPizzaResponseStub, 
-	getPizzaResponseStub 
+	getPizzaResponseStub, 
+	indexPizzaResponseStub 
 } from './endpoint-stubs'
 import {
 	ApiActions 
@@ -8,5 +9,6 @@ import {
 
 export const apiStub: ApiActions = {
   createPizza: createPizzaResponseStub,
-	getPizza: getPizzaResponseStub
+	getPizza: getPizzaResponseStub,
+	indexPizza: indexPizzaResponseStub
 }

@@ -7,6 +7,10 @@ export function getRandomIntInclusive (min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min // The maximum is inclusive and the minimum is inclusive
 }
 
+export function getRandomFloatInclusive (min: number, max: number) : number {
+  return Math.random() * (max - min + 1) + min
+}
+
 export function getRandomUUID (): string {
   return uuidv4()
 }
