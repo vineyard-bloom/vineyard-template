@@ -25,8 +25,8 @@ const sampleConfig: FullConfig = {
     'dialect': 'postgres'
   },
   'janusEndpoints': {
-    'sourceDir': '/src/endpoints/definitions',
-    'targetDir': '/src/endpoints/generated',
+    'sourceDir': '/endpoints/definitions',
+    'targetDir': '/endpoints/generated',
     'stubMode': true,
     'endpointForSchema': 'endpointSchema'
   },

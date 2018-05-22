@@ -17,10 +17,9 @@
     "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
     "dev": "node scripts/start-api.js",
     "resetDb": "node scripts/fixture.js init",
-    "compile": "tsc | grep -v \"node_modules\"",
-    "endpoints": "node scripts/generate-endpoints-from-schema.js && yarn compile",
+    "endpoints": "node scripts/generate-endpoints-from-schema.js && tsc",
     "watch": "npm-watch",
-    "initialStartUp": "yarn && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts && yarn endpoints && yarn watch"
+    "initialStartUp": "yarn && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts && node scripts/generate-endpoints-from-schema.js && tsc && yarn watch"
   },
   "author": "aaron",
   "dependencies": {
@@ -37,13 +36,12 @@
   "devDependencies": {
     "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
-    "@types/node": "^7.0.5",
     "chai": "^4.1.2",
     "mocha": "^3.2.0",
     "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
     "tslint-no-unused-expression-chai": "^0.0.3",
-    "typescript": "^2.5.3"
+    "typescript": "2.5.3"
   }
 }

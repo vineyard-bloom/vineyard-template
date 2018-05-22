@@ -1,5 +1,5 @@
 // TODO: Edit this interface for specific uses
-import { DbRecord, UUID } from 'vineyard-data/src/core-types'
+import { UUID } from 'vineyard-data/src/core-types'
 
 export interface Pizza {
   id: UUID,
