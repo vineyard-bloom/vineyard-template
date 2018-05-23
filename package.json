@@ -20,7 +20,8 @@
     "endpoints": "node scripts/generate-endpoints-from-schema.js",
     "tsc": "tsc",
     "watch": "npm-watch",
-    "initialStartUp": "yarn && tsc --lib es2016 scripts/*.ts && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts && yarn endpoints && yarn tsc"
+    "copyConfigSample": "node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts",
+    "initialStartUp": "yarn && yarn copyConfigSample && tsc --lib es2016 scripts/*.ts && yarn endpoints && yarn tsc"
   },
   "author": "",
   "dependencies": {

@@ -1,5 +1,6 @@
 *.js.map
 *.js
+!scripts/copy-config-from-sample.js
 node_modules
 yarn-*
 .idea
