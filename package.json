@@ -15,12 +15,12 @@
   "scripts": {
     "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
     "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
-    "dev": "node scripts/start-api.js",
-    "resetDb": "node scripts/fixture.js init",
-    "endpoints": "node scripts/generate-endpoints-from-schema.js",
-    "tsc": "tsc",
-    "watch": "npm-watch",
-    "copyConfigSample": "node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts",
+    "dev": "echo '\nstarting api\n' && node scripts/start-api.js",
+    "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/fixture.js init",
+    "endpoints": "echo '\ncompiling endpoints\n' && node scripts/generate-endpoints-from-schema.js",
+    "tsc": "echo '\ncompiling typescript\n' && tsc",
+    "watch": "echo '\nwatching for json-schema changes\n' && npm-watch",
+    "copyConfigSample": "echo '\ncopying fresh config\n' && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts",
     "initialStartUp": "yarn && yarn copyConfigSample && tsc --lib es2016 scripts/*.ts && yarn endpoints && yarn tsc"
   },
   "author": "",

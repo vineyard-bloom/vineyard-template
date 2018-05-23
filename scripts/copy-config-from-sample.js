@@ -7,7 +7,7 @@ const lineReader = readline.createInterface({
     output: process.stdout
 });
 function executeCopyIfYes() {
-    lineReader.question('\nThis will wipe out any existing config.ts and config-test.ts. Are you sure you wish to proceed? Y/N\n', (answer) => {
+    lineReader.question('This will wipe out any existing config.ts and config-test.ts. Are you sure you wish to proceed? Y/N\n', (answer) => {
         if (['Y', 'y', 'yes', 'Yes'].indexOf(answer) > -1) {
             console.log('OK, copying fresh config values.');
             const configSample = fs.readFileSync('./config/config-sample.ts').toString();

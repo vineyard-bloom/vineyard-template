@@ -7,7 +7,7 @@ const lineReader = readline.createInterface({
 })
 
 export function executeCopyIfYes () {
-  lineReader.question('\nThis will wipe out any existing config.ts and config-test.ts. Are you sure you wish to proceed? Y/N\n', (answer: string) => {
+  lineReader.question('This will wipe out any existing config.ts and config-test.ts. Are you sure you wish to proceed? Y/N\n', (answer: string) => {
     if (['Y','y','yes','Yes'].indexOf(answer) > -1) {
       console.log('OK, copying fresh config values.')
 
