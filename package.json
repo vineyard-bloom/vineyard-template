@@ -10,6 +10,14 @@
       ],
       "extensions": "json",
       "quiet": false
+    },
+    "tsc": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "ts",
+      "ignore": "*.d.ts",
+      "quiet": false
     }
   },
   "scripts": {
@@ -17,11 +25,12 @@
     "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
     "dev": "node scripts/start-api.js",
     "resetDb": "node scripts/fixture.js init",
-    "endpoints": "node scripts/generate-endpoints-from-schema.js && tsc",
+    "endpoints": "node scripts/generate-endpoints-from-schema.js",
+    "tsc": "tsc",
     "watch": "npm-watch",
-    "initialStartUp": "yarn && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts && node scripts/generate-endpoints-from-schema.js && tsc && yarn watch"
+    "initialStartUp": "yarn && tsc --lib es2016 scripts/*.ts && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts && yarn endpoints && yarn tsc"
   },
-  "author": "aaron",
+  "author": "",
   "dependencies": {
     "@types/node": "^7.0.16",
     "@types/request-promise": "^4.1.39",
