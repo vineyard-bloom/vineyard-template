@@ -32,7 +32,7 @@
     "source-map-support": "0.5.0",
     "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
-    "vineyard-janus": "vineyard-bloom/janus-template#97226a4f33026aca56710d7c5e5c10aa18234f15",
+    "vineyard-janus": "vineyard-bloom/janus-template#1.0.0-beta",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
   "devDependencies": {
