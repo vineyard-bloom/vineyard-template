@@ -16,7 +16,7 @@
     "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
     "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
     "dev": "echo '\nstarting api\n' && node scripts/start-api.js",
-    "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/fixture.js init",
+    "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/reset-db.js",
     "endpoints": "echo '\ncompiling endpoints\n' && node scripts/generate-endpoints-from-schema.js",
     "tsc": "echo '\ncompiling typescript\n' && tsc",
     "watch": "echo '\nwatching for json-schema changes\n' && npm-watch",
