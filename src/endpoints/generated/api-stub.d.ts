@@ -1,2 +1,2 @@
-import { ApiActions } from './api-contract';
-export declare const apiStub: ApiActions;
+import { ApiContract } from './api-contract';
+export declare const apiStub: ApiContract;

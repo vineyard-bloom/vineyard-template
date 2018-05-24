@@ -1,11 +1,10 @@
 import { Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
 import { synthesizeApiActions } from './request-handlers'
-import { configureJsonSchemaGeneration } from 'vineyard-janus'
 import * as path from 'path'
-import { JanusEndpointsConfig } from '../../config/config-types'
-import { EndpointDefinition } from 'vineyard-janus/generators/endpoint-schema-parsing'
 import { EndpointInfo, Method } from 'vineyard-lawn/source/types'
+import { configureJsonSchemaGeneration, EndpointDefinition } from 'vineyard-janus'
+
 const schemaValidators = require('./schema-validators.json')
 
 export function initializeEndpoints (server: Server, village: Village) {
@@ -23,12 +22,13 @@ export function initializeEndpoints (server: Server, village: Village) {
   server.createEndpoints(emptyPreprocessor, endpointInfo)
 }
 
-function pullEndpointDefinitionsFromSchema(janusEndpointsConfig: { sourceDir: string, targetDir: string }): {
-  rawSchema: object, endpointDefinitions: EndpointDefinition[]
-}
-{
+function pullEndpointDefinitionsFromSchema(
+    janusEndpointsConfig: { sourceDir: string, targetDir: string }
+  ): { rawSchema: object, endpointDefinitions: EndpointDefinition[] } {
   const { sourceDir, targetDir } = janusEndpointsConfig
+
   const prefix = path.join(__dirname, '..')
+
   return configureJsonSchemaGeneration(
     prefix + targetDir,
     prefix + sourceDir,

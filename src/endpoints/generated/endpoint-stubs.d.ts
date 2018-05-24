@@ -1,4 +1,4 @@
-import { CreatePizzaRequest, GetPizzaRequest, IndexPizzaRequest, CreatePizzaResponse, GetPizzaResponse, IndexPizzaResponse } from './endpoint-types';
+import { CreatePizzaRequest, CreatePizzaResponse, GetPizzaRequest, GetPizzaResponse, IndexPizzaRequest, IndexPizzaResponse } from './endpoint-types';
 /************************ -- CreatePizza -- *****************************/
 export declare function createPizzaRequestDataStub(): Promise<CreatePizzaRequest['data']>;
 export declare function createPizzaResponseStub(): Promise<CreatePizzaResponse>;

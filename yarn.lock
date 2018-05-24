@@ -3267,9 +3267,9 @@ vineyard-ground@vineyard-bloom/vineyard-ground#1.0.0-beta:
     sequelize "^4.16.2"
     uuid "^3.0.1"
 
-vineyard-janus@vineyard-bloom/janus-template#1.0.0-beta:
-  version "1.0.0-beta.1"
-  resolved "https://codeload.github.com/vineyard-bloom/janus-template/tar.gz/bb4f6bd141bb20998a65f0b4ffc9b02024789a79"
+vineyard-janus@vineyard-bloom/vineyard-janus#1.0.0-beta:
+  version "1.0.0-beta.5"
+  resolved "https://codeload.github.com/vineyard-bloom/vineyard-janus/tar.gz/370d0f30924ae47ee9b4bcaef8687805452b9bc4"
   dependencies:
     "@types/faker" "^4.1.2"
     "@types/node" "^7.0.16"

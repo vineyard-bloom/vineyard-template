@@ -4,10 +4,10 @@ import {
 	indexPizzaResponseStub 
 } from './endpoint-stubs'
 import {
-	ApiActions 
+	ApiContract 
 } from './api-contract'
 
-export const apiStub: ApiActions = {
+export const apiStub: ApiContract = {
   createPizza: createPizzaResponseStub,
 	getPizza: getPizzaResponseStub,
 	indexPizza: indexPizzaResponseStub

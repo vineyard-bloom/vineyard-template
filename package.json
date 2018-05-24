@@ -1,7 +1,7 @@
 {
-  "name": "",
-  "version": "0.1.0",
-  "description": "",
+  "name": "vineyard-server-template",
+  "version": "1.0.0-beta.0",
+  "description": "Template for web service backends",
   "main": "scripts/api.js",
   "watch": {
     "endpoints": {
@@ -32,7 +32,7 @@
     "source-map-support": "0.5.0",
     "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
-    "vineyard-janus": "vineyard-bloom/janus-template#1.0.0-beta",
+    "vineyard-janus": "vineyard-bloom/vineyard-janus#1.0.0-beta",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
   "devDependencies": {

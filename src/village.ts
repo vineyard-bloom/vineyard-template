@@ -4,7 +4,7 @@ import { createLogic, Logic } from './logic/index'
 import { BackingServices, createBackingServices } from './backing-services/index'
 import { realConfig } from '../config/config'
 import { createApiActions } from './endpoints/request-handlers'
-import { ApiActions } from './endpoints/generated/api-contract'
+import { ApiContract } from './endpoints/generated/api-contract'
 import { apiStub } from './endpoints/generated/api-stub'
 
 export interface Village {
@@ -12,7 +12,7 @@ export interface Village {
   backingServices: BackingServices
   model: Model
   logic: Logic
-  apiActions: ApiActions
+  apiActions: ApiContract
 }
 
 export function createVillage (config: FullConfig = realConfig, backingServiceOverrides: Partial<BackingServices> = {}): Village {

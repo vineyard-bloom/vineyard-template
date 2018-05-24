@@ -7,6 +7,7 @@ import { Request } from 'vineyard-lawn'
  */
 
 /************************ -- CreatePizza -- *****************************/
+
 	
 export interface CreatePizzaRequest extends Request {
 	data: {
@@ -14,6 +15,7 @@ export interface CreatePizzaRequest extends Request {
 	  size: number
 	}
 }
+
 
 
 export type CreatePizzaResponse = {
@@ -25,12 +27,14 @@ export type CreatePizzaResponse = {
 
 
 /************************ -- GetPizza -- *****************************/
+
 	
 export interface GetPizzaRequest extends Request {
 	data: {
 	  pizzaId: string
 	}
 }
+
 
 
 export type GetPizzaResponse = {
@@ -42,11 +46,13 @@ export type GetPizzaResponse = {
 
 
 /************************ -- IndexPizza -- *****************************/
+
 	
 export interface IndexPizzaRequest extends Request {
 	data: {}
 }
 	
+
 
 export type IndexPizzaResponse = {
   id: string

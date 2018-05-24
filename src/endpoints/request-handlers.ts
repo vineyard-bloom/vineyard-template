@@ -2,10 +2,10 @@ import { mapf, pizzaToApiPizza } from './mapping-helpers'
 import { Logic } from '../logic/index'
 import { EndpointInfo, Method } from 'vineyard-lawn/source/types'
 import { Request } from 'vineyard-lawn'
-import { ApiActions } from './generated/api-contract'
+import { ApiContract } from './generated/api-contract'
 import { EndpointDefinition } from 'vineyard-janus'
 
-export function createApiActions (logic: Logic): ApiActions {
+export function createApiActions (logic: Logic): ApiContract {
   const { pizzaLogic } = logic
   return {
     createPizza: (req) => pizzaLogic.createPizza(req.data).then(pizzaToApiPizza),
@@ -14,7 +14,7 @@ export function createApiActions (logic: Logic): ApiActions {
   }
 }
 
-export function synthesizeApiActions (apiActions: ApiActions, endpointDefinitions: EndpointDefinition[]): EndpointInfo[] {
+export function synthesizeApiActions (apiActions: ApiContract, endpointDefinitions: EndpointDefinition[]): EndpointInfo[] {
   return endpointDefinitions.map(ed => {
     return {
       method: mapJsonVerbToMethod[ed.verb],
@@ -33,7 +33,7 @@ const mapJsonVerbToMethod: { [verb: string]: Method } = {
   'patch': Method.patch
 }
 
-export function extractActionByName (apiActions: ApiActions, actionName: string): (req: Request) => Promise<any> {
+export function extractActionByName (apiActions: ApiContract, actionName: string): (req: Request) => Promise<any> {
   const forgetfulApiActions = apiActions as any as { [actionName: string]: (req: Request) => Promise<any>}
   const action = forgetfulApiActions[actionName]
   if (!action) {
