@@ -30,5 +30,9 @@ const sampleConfig: FullConfig = {
     'stubMode': true,
     'endpointForSchema': 'endpointSchema'
   },
-  'pizzaPrices': new Map<PizzaType, number>()
+  'pizzaPrices': new Map<PizzaType, number>([
+    [PizzaType.cheese, 1],
+    [PizzaType.red, 0.75],
+    [PizzaType.white, 1.25]
+  ])
 }

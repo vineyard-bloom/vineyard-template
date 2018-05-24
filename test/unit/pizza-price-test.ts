@@ -4,6 +4,7 @@ import { PizzaLogic } from '../../src/logic/pizza-logic'
 import { getRandomEnumValue, getRandomIntInclusive } from '../../fixtures/random-helpers'
 import { PizzaType } from '../../src/model/model-types'
 import * as assert from 'assert'
+import { testConfig } from '../../config/config-test'
 
 // Unit tests should run without touching any live backing service (bitcoind, geth, etc) except possibly the db. Each it
 // block should exercise a single small unit of code.
@@ -12,7 +13,7 @@ describe('pizza type', function () {
   let pizzaLogic: PizzaLogic
 
   before(async () => {
-    const { config: villageConfig, logic } = createVillage()
+    const { config: villageConfig, logic } = createVillage(testConfig)
     config = villageConfig
     pizzaLogic = logic.pizzaLogic
   })

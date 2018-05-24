@@ -6,8 +6,8 @@
     1. install all dependencies
     2. create your config.ts and config-test.ts configuration files.
     3. compile your json-schema to typescript
-    4. kick off a watcher will re-compile your json-schema to typescript whenever json-schema is modified.
-2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`.
+    4. compile your typescript
+2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`. Run `$tsc`
     1. Do the same to config/config-test.ts `testConfig.database` to run tests.
 3. If the database name added above doesn't yet refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
 7. Run `$yarn resetDb`. This will add the vineyard tables (as well as the default user table included in this template) to your database.
