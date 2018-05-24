@@ -1,51 +1,147 @@
-# Vineyard Backend API Template
+# Vineyard Backend API Template #
+
 ---------
 
-## Running the Template For the First Time ##
+### Running the Template For the First Time ###
 1. Run `$yarn initialStartUp`. This will..
     1. install all dependencies
     2. create your config.ts and config-test.ts configuration files.
     3. compile your json-schema to typescript
     4. compile your typescript
-2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`. Run `$tsc`
-    1. Do the same to config/config-test.ts `testConfig.database` to run tests.
+2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`. Run `$ yarn tsc`.
 3. If the database name added above doesn't yet refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
-7. Run `$yarn resetDb`. This will add the vineyard tables (as well as the default user table included in this template) to your database.
-    1. Run `$yarn resetDb -- test` to wipe the test db.
-8. To start the server `$yarn dev`.
-9. To run tests `$yarn test`.
-10. **NOTE**: IF you are running the system locally or with http (not https) then in config.json and config-sample.json you need also to set `"api" -> "cookies" -> "cookie" -> "secure" = false`. 
+4. Run `$ yarn resetDb`. This will add the vineyard tables (as well as the default user table included in this template) to your database.
+5. To start the server `$ yarn dev`.
 
-## Root Directory Folders ##
+#### Running Tests ####
+The included tests all reference a second config file, config/config-test.ts. Tests may point at any config file, and 
+many may be created and used. To get the included tests to run, modify config/config-test.ts `testConfig.database` and `$ yarn tsc` as above (step 2).
+Run `$ yarn test` to execute the tests.
 
- - **/config**: Contains configuration read by the webapp.
+### Root Directory Folders ###
+
+ - **/config**: Contains configuration files for environment specific values.
  - **/fixtures**: Contains functions for generating random and stock data for server initialization and tests.
- - **/scripts**: Files to be run from cli with node. Includes start-api.js (starts servers) and fixture.js (resets db, loads db with fixtures), and possibly daemon startup scripts.
+ - **/scripts**: Files to be run from cli with node. Includes start-api.js (starts servers), and possibly daemon startup scripts.
  - **/src**: The app files.
  - **/test**: Tests for various app components.
 
-##Request-Response Flow##
+### Src Organization ###
 
 When the api is run, requests permeate through a number of layers in the app. Each layer has its own directory:
 
-- **/src/endpoints** : Requests are initially fielded by EndpointInitializer. This class defines the endpoints: paths and verbs, the appropriate json-schema validator (found in request-validation.json), and directs the request to the next layer...
+- **/src/endpoints**: This directory contains json-schema defining the endpoints of the application and the code to 
+embed those definitions into a working server. The interface `ApiContract` in generated/api-contract.ts indicates the methods
+which the coder must provide. The methods will be triggered when a request hits an endpoint, and will typically defer
+all heavy lifting to the next layer. See model.ts for three example methods implementing the `ApiContract`.
 
-- **/src/endpoints/request-handlers**: Requests are delegated from the EndpointInitializer to an appropriate RequestHandler. These handlers do minimal logic, decomposing the request in request agnostic pieces of data. Handlers call logic files.
+- **/src/logic**:  Logic files do the heavy lifting of the application. A logic class shouldn't know anything about request specific technology or client-side code, as this is normalized by the request handlers. Their main role is to orchestrate the database and various other backing services and synthesize their results into aggregated results. Logic files should _not_ know anything about what kind of thing calls them -- be it a request handler (and hence an http api call), a cron, or a script. The file logic.ts declares all app logics as well as their initialization, while pizza-logic.ts is one such logic.
 
-- **/src/logic**:  Logic files do the heavy lifting of the application. A logic class shouldn't know anything about request specific technology or client-side code, as this is normalized by the request handlers. Their main role is to orchestrate the database and various other backing services and synthesize their results into aggregated results. Logic files should _not_ know anything about what kind of thing calls them -- be it a request handler (and hence an http api call), a cron, or a script.
+- **/src/model**: This directory contains the code for interacting with the psql database. This includes schema.json (defines the database tables and relationships), and model-types.ts (defines the types corresponding to database entries), and model.ts which defines and creates the vineyard-ground collections for interacting with the db.
 
-- **/src/model**: This directory contains the code for interacting with the vineyard-ground controlled core psql database. This includes schema.json (defines the database tables and relationships), model-types.ts (defines the types corresponding to database entries), and the daos.
+- **/src/backing-services**: This is where code to interact with external resources (see https://12factor.net/backing-services) should live. These resources include custom wrappers around external apis, additional databases, and cryptocurrency nodes. Logic files will call these backing service objects and aggregate their results. As with logic and model, the backing-services.ts file declares and creates all backing-services in the app.
 
-- **/src/model/dao**: A dao (data access object) is a wrapper around lower level vineyard-ground database access methods, custom for the functionality of the given app. While creating a user will always at least require adding a record to the user table, it may also require a number of other database accesses for related tables. The userDao (e.g.) would handle this custom aggregation of database transactions for the given project.
+All of these logics, backing-services, db table collections, and endpoints are created and integrated in village.ts. The `Village` interface... 
+```
+   export interface Village {
+     config: FullConfig
+     backingServices: BackingServices
+     model: Model
+     logic: Logic
+     apiContract: ApiContract
+   }
+```
 
-- **/src/backing-services**: This is where code to interact with external resources (see https://12factor.net/backing-services) should live. These resources include custom wrappers around external apis, additional databases, and cryptocurrency nodes. Logic files will call these backing service objects and aggregate their results.
+... contains every piece of the fully built application. Typically villages are constructed from config, to the backingServices and model, to logic, to apiContract.
 
-##App Startup Flow##
+### Scripts in package.json ###
 
-Unlike other node/express apps which rely heavily on importing objects directly to where they are needed (hence obscuring the notion of "how does the app get built?"), the vineyard template is designed instead with a heavy emphasis towards importing class definitions and creating instances of those classes and passing them in explicitly. The creation of instances (of e.g. request-handler or logic or backing-service or dao instances) is handled in three classes which together construct the entities of the entire application.
+   ```
+   $yarn test
+   ```
+   Runs fully automated tests.
+   ```
+   $yarn extTest
+   ```
+   Runs external tests. These hit live backing-services (like a live api) and should be run sparingly.
+   ```
+   $yarn dev
+   ```
+   Starts the server.
+   ```
+   $yarn resetDb
+   ```
+   Resets the database. Can run `yarn resetDb -- test` to clean the database defined in config/config-test.ts.
+   ```
+   $yarn endpoints
+   ```
+   Compiles the json-schema endpoint definitions in src/endpoints/definitions to the generated files in src/endpoints/generated.
+   ```
+   $yarn tsc
+   ```
+   Runs tsc at the version bundled in the project (2.5.3)
+   ```
+   $yarn watch
+   ```
+   Kicks off a process which re-runs `yarn endpoints` whenever a json-schema file is changed.
+   ```
+   $yarn copyConfigSample
+   ```
+   Creates `config/config.ts` and `config/config-test.ts` or sets them to match `config/config-sample.ts`.
+   ```
+   $yarn initialStartUp
+   ```
+   Run when the project is first cloned.
 
-1. /src/village.ts :  Village extends from GenericVillage, a vineyard-village class which processes both /config/config.json (giving access to config specificied constants) and /src/model/schema.json (connecting the app to the database). In addition, village is used in the template to initialize all backing-services and daos. They should be stored on the class as private properties and referenceable with getters.
 
-2. /src/web-service.ts : WebService extends from GenericWebService, a vineyard-village class which is used to start the application as well as setup various middleware around the application. In addition, WebService is used in the template to initialize all logic instances.  These will require backing-services and daos, which are accessible via the getters on the Village instance passed into WebService on construction. Logic instances should again be saved as private properties on the class and accessible via getters.
+### Working with vineyard-janus ###
 
-3.  /src/endpoints/endpoint-initializer.ts : EndpointInitializer is where all RequestHandler instances are created. These will require logic instances, and are accessible via the getters on the  WebService instance passed into EndpointInitializer on construction. RequestHandlers should be saved again as private properties with getters. This class also specifies all of the endpoints in the app and whether they should be publicly accessible or only by a logged in user.
+This template is designed to integrate with vineyard-janus, a new vineyard module providing utilities around json-schema for defining
+endpoints. You can learn more about json-schema here: http://json-schema.org/example2.html. In src/endpoints/definitions/index-pizza.json, you'll find the definition for the endpoint which serves up all the pizzas in the database.
+
+```
+{
+  "title": "IndexPizza",
+  "path": "/pizzas",
+  "verb": "get",
+  "authorized": 0,
+  "request":{
+    "type": "object",
+    "properties": {
+    },
+    "additionalProperties": false
+  },
+  "response":{
+    "type": "array",
+    "items": {
+      "$ref": "#/structures/pizza"
+    }
+  }
+}
+```
+
+Upon running `$ yarn endpoints`, a script leveraging vineyard-janus, the above schema will generate...
+1. types `IndexPizzaRequest` and `IndexPizzaResponse` which satisfy the json-schema under the above request and response properties.
+2. stub functions `indexPizzaRequestDataStub()` and `indexPizzaResponseStub()` which will generate random data satisfying the schema.
+3. a function type declaration `indexPizza: (req: IndexPizzaRequest) => Promise<IndexPizzaResponse>` within the `ApiContract` interface.
+
+Once you've implemented the `indexPizza` method as in (3) above, the server will now spin up with a `/pizzas` endpoint and will
+automatically validate requests to match the `IndexPizzaRequest` type and the more detailed request json-schema.
+
+Janus functionality is configurable in the following portion of config/config.ts: 
+
+```
+  'janusEndpoints': {
+    'sourceDir': '/endpoints/definitions',
+    'targetDir': '/endpoints/generated',
+    'stubMode': true,
+    'endpointForSchema': 'endpointSchema'
+  },
+```
+
+The sourceDir and targetDir simply reference where json-schema can be found, and where generated code should end up. Stub mode
+is an interesting toggle that leverages the above stub functions (2) to spin the server up entirely with randomly generated stubbed data: 
+As soon as the front and backend agree on the endpoint, the backend can have a running server for the front end to develop with.
+Finally the endpointForSchema is an optional argument, which when present, creates an endpoint at (in this case) '/endpointSchema'
+which serves up all of the raw schema kept in the sourceDir. 
+   

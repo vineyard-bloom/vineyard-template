@@ -5,4 +5,4 @@ export declare function pizzaToApiPizza(p: Pizza): {
     size: number;
     price: number;
 };
-export declare function mapf<S, T>(f: (s: S) => T): (ss: S[]) => T[];
+export declare function fmap<S, T>(f: (s: S) => T): (ss: S[]) => T[];

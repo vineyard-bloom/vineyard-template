@@ -1,5 +1,5 @@
 import { PizzaLogic } from './pizza-logic'
-import { Model } from '../model/index'
+import { Model } from '../model/model'
 import { FullConfig } from '../../config/config-types'
 
 export interface Logic {

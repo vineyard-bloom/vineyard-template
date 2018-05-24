@@ -1,6 +1,6 @@
 import { Pizza, PizzaType } from '../model/model-types'
 import { Omit, UUID } from 'vineyard-data/src/core-types'
-import { PizzaCollection } from '../model/index'
+import { PizzaCollection } from '../model/model'
 
 export class PizzaLogic {
   private readonly pizzaCollection: PizzaCollection

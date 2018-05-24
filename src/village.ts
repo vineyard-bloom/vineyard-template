@@ -1,9 +1,9 @@
-import { createModel, Model } from './model/index'
+import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
-import { createLogic, Logic } from './logic/index'
-import { BackingServices, createBackingServices } from './backing-services/index'
+import { createLogic, Logic } from './logic/logic'
+import { BackingServices, createBackingServices } from './backing-services/backing-services'
 import { realConfig } from '../config/config'
-import { createApiActions } from './endpoints/request-handlers'
+import { implementApiContract } from './endpoints/api-contract-implementation'
 import { ApiContract } from './endpoints/generated/api-contract'
 import { apiStub } from './endpoints/generated/api-stub'
 
@@ -12,20 +12,20 @@ export interface Village {
   backingServices: BackingServices
   model: Model
   logic: Logic
-  apiActions: ApiContract
+  apiContract: ApiContract
 }
 
 export function createVillage (config: FullConfig = realConfig, backingServiceOverrides: Partial<BackingServices> = {}): Village {
   const backingServices = createBackingServices(config, backingServiceOverrides)
   const model = createModel(config.database)
   const logic = createLogic(model, config)
-  const apiActions = config.janusEndpoints.stubMode ? apiStub : createApiActions(logic)
+  const apiContract = config.janusEndpoints.stubMode ? apiStub : implementApiContract(logic)
 
   return {
     config,
     backingServices,
     model,
     logic,
-    apiActions
+    apiContract
   }
 }

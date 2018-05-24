@@ -9,6 +9,6 @@ export function pizzaToApiPizza(p: Pizza): { id: string, type: string, size: num
   }
 }
 
-export function mapf<S,T>( f: (s: S) => T ) : ( ss: S[] ) => T[] {
+export function fmap<S,T>(f: (s: S) => T ) : (ss: S[] ) => T[] {
   return (ss) => ss.map(f)
 }

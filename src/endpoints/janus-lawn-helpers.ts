@@ -1,17 +1,29 @@
-import { mapf, pizzaToApiPizza } from './mapping-helpers'
-import { Logic } from '../logic/index'
-import { EndpointInfo, Method } from 'vineyard-lawn/source/types'
-import { Request } from 'vineyard-lawn'
+import { EndpointInfo, Method, Request } from 'vineyard-lawn'
+import { configureJsonSchemaGeneration, EndpointDefinition } from 'vineyard-janus'
 import { ApiContract } from './generated/api-contract'
-import { EndpointDefinition } from 'vineyard-janus'
+import * as path from 'path'
+const schemaValidators = require('./schema-validators.json')
 
-export function createApiActions (logic: Logic): ApiContract {
-  const { pizzaLogic } = logic
+export function createEndpointToServeEndpointSchema(path: string, rawSchema: object): EndpointInfo {
   return {
-    createPizza: (req) => pizzaLogic.createPizza(req.data).then(pizzaToApiPizza),
-    getPizza: (req) => pizzaLogic.getPizza(req.data.pizzaId).then(pizzaToApiPizza),
-    indexPizza: (req) => pizzaLogic.indexPizza().then(mapf(pizzaToApiPizza))
+    method: Method.get,
+    path,
+    action: () => Promise.resolve(rawSchema)
   }
+}
+
+export function pullEndpointDefinitionsFromSchema(
+  janusEndpointsConfig: { sourceDir: string, targetDir: string }
+): { rawSchema: object, endpointDefinitions: EndpointDefinition[] } {
+  const { sourceDir, targetDir } = janusEndpointsConfig
+
+  const prefix = path.join(__dirname, '..')
+
+  return configureJsonSchemaGeneration(
+    prefix + targetDir,
+    prefix + sourceDir,
+    schemaValidators
+  )
 }
 
 export function synthesizeApiActions (apiActions: ApiContract, endpointDefinitions: EndpointDefinition[]): EndpointInfo[] {

@@ -6,7 +6,7 @@ import { randomCreatePizzaData, randomPizzaToCreate } from '../../fixtures/rando
 import { createVillage, Village } from '../../src/village'
 import { DevModeler } from 'vineyard-ground/source/modeler'
 import Axios from 'axios'
-import { PizzaCollection } from '../../src/model/index'
+import { PizzaCollection } from '../../src/model/model'
 import { Pizza, PizzaType } from '../../src/model/model-types'
 import { Omit } from 'vineyard-data/src/core-types'
 import { arrayOfRandom, getRandomIntInclusive } from '../../fixtures/random-helpers'

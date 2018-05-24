@@ -27,7 +27,7 @@ export function assertEqualByData (ob1: any, ob2: any, ignoreAdditionalPropertie
   assert.deepEqual(clone1, clone2)
 }
 
-// await assertThrowsErrorMessage( () => expectedErroringFunction(input1...), "400 not found" )
+// await assertThrowsErrorMessage( () => expectedErroringFunction(input1,...), "400 not found" )
 export async function assertThrowsErrorMessage(codeToRun: () => any, message: string) : Promise<void> {
   try {
     await codeToRun();
