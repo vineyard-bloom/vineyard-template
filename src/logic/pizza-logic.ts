@@ -1,6 +1,7 @@
 import { Pizza, PizzaType } from '../model/model-types'
 import { Omit, UUID } from 'vineyard-data/src/core-types'
 import { PizzaCollection } from '../model/model'
+import { throwIfUndefined } from "vineyard-data/src/core-utility";
 
 export class PizzaLogic {
   private readonly pizzaCollection: PizzaCollection
@@ -22,7 +23,7 @@ export class PizzaLogic {
   }
 
   async getPizza (pizzaId: UUID): Promise<Pizza> {
-    return this.pizzaCollection.get(pizzaId)
+    return this.pizzaCollection.get(pizzaId).then(possiblePizza => throwIfUndefined(possiblePizza, pizzaId))
   }
 
   async indexPizza (): Promise<Pizza[]> {
