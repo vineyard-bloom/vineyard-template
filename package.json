@@ -3,15 +3,6 @@
   "version": "1.0.0-beta.4",
   "description": "Template for web service backends",
   "main": "scripts/api.js",
-  "watch": {
-    "endpoints": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "json",
-      "quiet": false
-    }
-  },
   "scripts": {
     "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
     "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
@@ -19,31 +10,26 @@
     "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/reset-db.js",
     "endpoints": "echo '\ncompiling endpoints\n' && node scripts/generate-endpoints-from-schema.js",
     "tsc": "echo '\ncompiling typescript\n' && tsc",
-    "watch": "echo '\nwatching for json-schema changes\n' && npm-watch",
     "copyConfigSample": "echo '\ncopying fresh config\n' && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts",
     "initialStartUp": "yarn && yarn copyConfigSample && tsc --lib es2016 scripts/*.ts && yarn endpoints && yarn tsc"
   },
   "author": "",
   "dependencies": {
     "@types/node": "^7.0.16",
-    "@types/request-promise": "^4.1.39",
     "axios": "^0.18.0",
-    "npm-watch": "^0.3.0",
     "source-map-support": "0.5.0",
     "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
     "vineyard-janus": "vineyard-bloom/vineyard-janus#1.0.0-beta",
-    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
+    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta",
+    "typescript": "2.5.3"
   },
   "devDependencies": {
-    "@types/chai": "^4.0.4",
     "@types/mocha": "^2.2.43",
-    "chai": "^4.1.2",
     "mocha": "^3.2.0",
     "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "tslint-no-unused-expression-chai": "^0.0.3",
-    "typescript": "2.5.3"
+    "tslint-no-unused-expression-chai": "^0.0.3"
   }
 }
