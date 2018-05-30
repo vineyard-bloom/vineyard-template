@@ -1,8 +1,7 @@
 import { Pizza } from './model-types'
-import { Collection } from 'vineyard-ground/source/collection'
-import { SequelizeClient, DatabaseClient, DevModeler, Modeler } from 'vineyard-ground'
+import { DatabaseClient, DevModeler, Modeler, SequelizeClient } from 'vineyard-ground'
 import { FullConfig } from '../../config/config-types'
-import { StrictCollection } from 'vineyard-data'
+import { StrictCollection } from 'vineyard-data/modern'
 
 export interface Model {
   Pizza: PizzaCollection

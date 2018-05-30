@@ -3,7 +3,7 @@ import { CreatePizzaData } from '../src/logic/pizza-logic'
 import {
   getRandomEnumValue, getRandomFloatInclusive, getRandomIntInclusive
 } from './random-helpers'
-import { Omit } from 'vineyard-data/src/core-types'
+import { Omit } from 'vineyard-data/modern'
 
 export function randomCreatePizzaData (): CreatePizzaData {
   return {

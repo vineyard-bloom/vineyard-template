@@ -1,5 +1,4 @@
-// TODO: Edit this interface for specific uses
-import { UUID } from 'vineyard-data/src/core-types'
+import { UUID } from 'vineyard-data/modern'
 
 export interface Pizza {
   id: UUID,

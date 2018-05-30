@@ -3254,8 +3254,8 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vineyard-data@vineyard-bloom/vineyard-data#1.0.0-beta:
-  version "1.0.0-beta.3"
-  resolved "https://codeload.github.com/vineyard-bloom/vineyard-data/tar.gz/995e0c8d16885a96ad00ba09b5d6304a67c26189"
+  version "1.0.0-beta.5"
+  resolved "https://codeload.github.com/vineyard-bloom/vineyard-data/tar.gz/2c7e854fa7031b4d729c0c90f999e79a50e9f0f7"
 
 vineyard-ground@vineyard-bloom/vineyard-ground#1.0.0-beta:
   version "1.0.0-beta.17"

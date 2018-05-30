@@ -1,7 +1,7 @@
 import { Pizza } from './model-types';
 import { DatabaseClient, Modeler } from 'vineyard-ground';
 import { FullConfig } from '../../config/config-types';
-import { StrictCollection } from 'vineyard-data';
+import { StrictCollection } from 'vineyard-data/modern';
 export interface Model {
     Pizza: PizzaCollection;
     ground: Modeler;
