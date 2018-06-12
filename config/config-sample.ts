@@ -1,5 +1,4 @@
 import { FullConfig } from './config-types'
-import { PizzaType } from '../src/model/model-types'
 
 const sampleConfig: FullConfig = {
   'api': {
