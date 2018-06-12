@@ -21,7 +21,6 @@
     "typescript": "2.5.3",
     "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
-    "vineyard-janus": "vineyard-bloom/vineyard-janus#1.0.0-beta",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
   },
   "devDependencies": {
