@@ -1,6 +1,6 @@
 import { FullConfig } from './config-types'
 
-const sampleConfig: FullConfig = {
+const config: FullConfig = {
   'api': {
     'port': 3000,
     'ssl': {
@@ -22,16 +22,5 @@ const sampleConfig: FullConfig = {
     'username': '',
     'password': '',
     'dialect': 'postgres'
-  },
-  'janusEndpoints': {
-    'sourceDir': '/endpoints/definitions',
-    'targetDir': '/endpoints/generated',
-    'stubMode': true,
-    'endpointForSchema': 'endpointSchema'
-  },
-  'pizzaPrices': new Map<PizzaType, number>([
-    [PizzaType.cheese, 1],
-    [PizzaType.red, 0.75],
-    [PizzaType.white, 1.25]
-  ])
+  }
 }
