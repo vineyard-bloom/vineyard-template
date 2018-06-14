@@ -5,7 +5,7 @@ export declare namespace requestTypes {
     }
 }
 export declare namespace responseTypes {
-    interface LoginUserResponse extends Request {
-        data: {};
+    interface LoginUserResponse {
+        success: string;
     }
 }
