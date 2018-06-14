@@ -1,6 +1,6 @@
 import { Model } from './model/model';
 import { FullConfig } from '../config/config-types';
-import { Logic } from './logic/logic';
+import { Logic } from './logic';
 import { BackingServices } from './backing-services/backing-services';
 export interface Village {
     config: FullConfig;

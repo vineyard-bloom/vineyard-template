@@ -1,3 +1,4 @@
+import * as assert from 'assert'
 import { createUserFixture } from '../../fixtures'
 import { createVillage } from '../../src/village'
 

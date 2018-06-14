@@ -1,7 +1,7 @@
 import { UserManager, UserService } from 'vineyard-users'
 import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
-import { Logic, UserLogic } from './logic/logic'
+import { Logic, UserLogic } from './logic'
 import {
   BackingServices,
   createBackingServices

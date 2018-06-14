@@ -17,7 +17,7 @@ export const config: FullConfig = {
   },
   'database': {
     'host': 'localhost',
-    'database': '',
+    'database': 'vineyard_server_template',
     'devMode': true,
     'username': '',
     'password': '',
@@ -42,7 +42,7 @@ export const testConfig: FullConfig = {
   },
   'database': {
     'host': 'localhost',
-    'database': '',
+    'database': 'vineyard_server_template_test',
     'devMode': true,
     'username': '',
     'password': '',

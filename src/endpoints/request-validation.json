@@ -1,3 +1,12 @@
 {
-  "empty": {}
+  "empty": {},
+  "loginUser": {
+
+  },
+  "registerUser": {
+
+  },
+  "logoutUser": {
+
+  }
 }

@@ -1,5 +1,6 @@
 import { DevModeler } from 'vineyard-ground/source/modeler'
 import { createVillage } from '../src/village'
+import { batchCreateUsers } from '../fixtures'
 
 require('source-map-support').install()
 
@@ -11,6 +12,7 @@ const fixtures: any = {
     const village = createVillage()
     const model = village.model
     await (model.ground as DevModeler).regenerate()
+    await batchCreateUsers(village.logic.user, 20)
     process.exit(0)
   }
 }

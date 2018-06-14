@@ -1,7 +1,15 @@
-import { DatabaseClient, DevModeler, Modeler, SequelizeClient } from 'vineyard-ground'
+import {
+  DatabaseClient,
+  DevModeler,
+  Modeler,
+  SequelizeClient,
+  Collection } from 'vineyard-ground'
 import { FullConfig } from '../../config/config-types'
+import { User } from './model-types'
 
 export interface Model {
+  User: Collection<User>
+
   ground: Modeler
 }
 

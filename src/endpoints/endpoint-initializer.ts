@@ -1,54 +1,38 @@
 import { Method, Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
-import {
-  createUserEndpointGenerator,
-  UserManager,
-  UserService
-} from 'vineyard-users'
+import { UserManager, UserService } from 'vineyard-users'
 import { userRequestHandler } from './request-handlers/user-request-handlers'
+import { emptyPreprocessor } from './preprocessors'
 
 export function initializeEndpoints (server: Server, village: Village) {
-  const emptyPreprocessor = (request: Request) => Promise.resolve(request)
+  const validators = server.compileApiSchema(require('../endpoints/request-validation.json'))
+  const userManager = new UserManager(village.model.ground.getLegacyDatabaseInterface(), { model: village.model })
+  const userService = new UserService(server.getApp(), userManager, village.config.api.cookies)
 
-  const validators = server.compileApiSchema(
-    require('../endpoints/request-validation.json')
-  )
-
-  const userManager = new UserManager(
-    village.model.ground.getLegacyDatabaseInterface(),
-    { model: village.model }
-  )
-
-  const userService = new UserService(
-    server.getApp(),
-    userManager,
-    village.config.api.cookies
-  )
-
-  const userEndpoints = createUserEndpointGenerator(
-    userManager,
-    userService,
-    validators
-  )
-
-  /**
-   * Creates public endpoints
-   *
-   */
-
-  server.createEndpoints(emptyPreprocessor, [
+  const publicEndpoints = [
     {
       method: Method.post,
       path: 'user/login',
-      action: userRequestHandler.loginUser,
-      validators: validators.loginUser
+      action: userRequestHandler.loginUser(userService),
+      validator: validators.loginUser
     },
 
     {
       method: Method.post,
       path: 'user',
-      action: userRequestHandler.registerUser,
-      validators: validators.registerUser
+      action: userRequestHandler.registerUser(village.logic.user, userService),
+      validator: validators.registerUser
     }
-  ])
+  ]
+
+  const authorizedEndpoints = [
+    {
+      method: Method.post,
+      path: 'user/logout',
+      action: userRequestHandler.logoutUser(userService),
+      validator: validators.logoutUser
+    }
+  ]
+
+  server.createEndpoints(emptyPreprocessor, publicEndpoints)
 }

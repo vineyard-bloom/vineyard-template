@@ -3,14 +3,22 @@ import { Request } from 'vineyard-lawn'
 export namespace requestTypes {
   export interface LoginUserRequest extends Request {
     data: {
-
+      email: string
+      password: string
+      twoFactorCode: string
     }
   }
 
   export interface RegisterUserRequest extends Request {
     data: {
-
+      email: string
+      password: string
+      twoFactorCode: string
     }
+  }
+
+  export interface LogoutUserRequest extends Request {
+
   }
 }
 
@@ -20,6 +28,10 @@ export namespace responseTypes {
   }
 
   export interface RegisterUserResponse {
+    success: string
+  }
 
+  export interface LogoutUserResponse {
+    success: string
   }
 }

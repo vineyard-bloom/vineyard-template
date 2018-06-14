@@ -7,6 +7,6 @@ const userLogic = village.logic.user
 describe('User Endpoints', function () {
   it(' can login a user.', async function () {
     const user = await createUserFixture(userLogic, {})
-    const databaseUser = await userLogic.getUser(user.id)
+    const databaseUser = await userLogic.getUserById(user.id)
   })
 })
