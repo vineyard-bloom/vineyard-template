@@ -5,19 +5,15 @@
     "strict": true,
     "sourceMap": true,
     "declaration": true,
-    "watch": true,
-    "newLine": "lf",
-    "lib": [
-      "es2015"
-    ]
+    "newLine": "lf"
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "config/**/*",
     "src/**/*",
     "scripts/**/*",
-    "test/**/*"
+    "test/**/*",
+    "generators/**/*"
   ]
 }
