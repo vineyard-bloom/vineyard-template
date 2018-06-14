@@ -1,7 +1,7 @@
 import { UserManager, UserService } from 'vineyard-users'
 import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
-import { Logic } from './logic/logic'
+import { Logic, UserLogic } from './logic/logic'
 import {
   BackingServices,
   createBackingServices
@@ -22,7 +22,7 @@ export function createVillage (
   const backingServices = createBackingServices(config, backingServiceOverrides)
   const model = createModel(config.database)
   const logic = {
-    user: {}
+    user: new UserLogic(model.User)
   }
 
   return {

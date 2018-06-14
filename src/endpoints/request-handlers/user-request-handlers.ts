@@ -1,9 +1,16 @@
 import { requestTypes, responseTypes } from './api-types'
 
 export const userRequestHandler = {
-  registerUser: async (
+  loginUser: async (
     req: requestTypes.LoginUserRequest
-  ): Promise<responseTypes.LoginUserResponse> => (
-    { success: 'ok' }
-  )
+  ): Promise<responseTypes.LoginUserResponse> => {
+
+    return { success: 'ok' }
+  },
+
+  registerUser: async (
+    req: requestTypes.RegisterUserRequest
+  ): Promise<responseTypes.RegisterUserResponse> => {
+    return 1
+  }
 }

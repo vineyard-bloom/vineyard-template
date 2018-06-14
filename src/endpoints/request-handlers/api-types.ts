@@ -6,10 +6,20 @@ export namespace requestTypes {
 
     }
   }
+
+  export interface RegisterUserRequest extends Request {
+    data: {
+
+    }
+  }
 }
 
 export namespace responseTypes {
   export interface LoginUserResponse {
     success: string
+  }
+
+  export interface RegisterUserResponse {
+
   }
 }
