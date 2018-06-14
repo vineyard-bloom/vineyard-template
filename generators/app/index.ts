@@ -1,4 +1,5 @@
 import * as Generator from 'yeoman-generator'
+import { main } from "./src/vineyard-generator";
 
 class VineyardGenerator extends Generator {
 
@@ -6,16 +7,8 @@ class VineyardGenerator extends Generator {
     super(args, opts)
   }
 
-  copyBundle(path: string, context: any) {
-    this.fs.copyTpl(
-      this.templatePath(path),
-      this.destinationPath(''),
-      context
-    )
-  }
-
-  copyCommon() {
-    this.copyBundle('common', {})
+  async all() {
+    await main(this)
   }
 }
 

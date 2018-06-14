@@ -1,31 +1,10 @@
 {
-  "name": "vineyard-server-template",
-  "version": "1.0.0",
-  "description": "",
-  "main": "scripts/api.js",
+  "name": "<%= packageConfig.projectName %>",
+  "version": "1.0.0-beta.0",
+  "description": "<%= packageConfig.projectName %>",
   "scripts": {
-    "test": "find ./test/internal-functional -name '*-test.js' | xargs mocha && find ./test/unit -name '*-test.js' | xargs mocha",
-    "extTest": "find ./test/external-functional -name '*-test.js' | xargs mocha",
-    "dev": "echo '\nstarting api\n' && node scripts/start-api.js",
-    "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/reset-db.js",
-    "endpoints": "echo '\ncompiling endpoints\n' && node scripts/generate-endpoints-from-schema.js",
-    "tsc": "echo '\ncompiling typescript\n' && tsc",
-    "copyConfigSample": "echo '\ncopying fresh config\n' && node scripts/copy-config-from-sample.js && tsc --lib es2016 config/*.ts",
-    "initialStartUp": "yarn && yarn copyConfigSample && tsc --lib es2016 scripts/*.ts && yarn endpoints && yarn tsc"
+    "tsc": "tsc"
   },
-  "author": "",
-  "dependencies": {
-    "@types/node": "^7.0.16",
-    "source-map-support": "0.5.0",
-    "typescript": "2.5.3",
-    "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
-    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.x",
-    "vineyard-users": "github:vineyard-bloom/vineyard-users#user-endpoints"
-  },
-  "devDependencies": {
-    "@types/mocha": "^2.2.43",
-    "mocha": "^3.2.0",
-    "tslint": "^5.8.0",
-    "tslint-config-standard": "^7.0.0"
-  }
+  "dependencies": <%- JSON.stringify(packageConfig.dependencies, null, 4) %>,
+  "devDependencies": <%- JSON.stringify(packageConfig.devDependencies, null, 4) %>,
 }

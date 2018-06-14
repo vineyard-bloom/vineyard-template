@@ -15,7 +15,7 @@ describe('yeoman', function () {
       .inDir(tempPath) // This globally modifies the working directory and does not set it back.  Yeah.
       // .withOptions({ foo: 'bar' })
       // .withArguments(['name-x'])
-      // .withPrompts({ coffee: false })
+      .withPrompts({ projectName: 'yeoman-test' })
       .withLocalConfig({ lang: 'en' })
 
     console.log('Hello World')
