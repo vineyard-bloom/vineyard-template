@@ -1,6 +1,6 @@
 import { FullConfig } from './config-types'
 
-const config: FullConfig = {
+export const config: FullConfig = {
   'api': {
     'port': 3000,
     'ssl': {
