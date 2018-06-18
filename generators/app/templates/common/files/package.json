@@ -1,10 +1,10 @@
 {
   "name": "<%= packageConfig.projectName %>",
   "version": "1.0.0-beta.0",
-  "description": "<%= packageConfig.projectName %>",
+  "description": "<%= packageConfig.description %>",
   "scripts": {
     "tsc": "tsc"
   },
   "dependencies": <%- JSON.stringify(packageConfig.dependencies, null, 4) %>,
-  "devDependencies": <%- JSON.stringify(packageConfig.devDependencies, null, 4) %>,
+  "devDependencies": <%- JSON.stringify(packageConfig.devDependencies, null, 4) %>
 }

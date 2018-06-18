@@ -1,16 +1,32 @@
-export interface VineyardAnswers {
+
+export type StringMap = { [key: string]: string }
+
+export interface UserAnswers {
   projectName: string
   description: string
+  includeLawn: boolean
+  includeUsers: boolean
+  includeMinotaur: boolean
 }
 
 export interface PackageConfig {
   projectName: string
   description: string
-  dependencies: object
-  devDependencies: object
+  dependencies: StringMap
+  devDependencies: StringMap
+}
 
+export interface LawnContext {
+  snippets: StringMap
+}
+
+export interface Features {
+  lawn: LawnContext | undefined
+  minotaur: boolean
+  users: boolean
 }
 
 export interface CommonContext {
-  packageConfig: PackageConfig
+  packageConfig: PackageConfig,
+  features: Features
 }
