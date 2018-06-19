@@ -10,7 +10,7 @@
     `cp config/config-sample.ts config/config.ts`
 1. Make adjustments to the config/config.ts file to fit your project configuration
 1. Run `yarn tsc` to compile TypeScript files to JavaScript
-<%- features.lawn ? features.lawn.snippets['lawn-instructions'] : '' %>
+<%- features.lawn ? features.snippets['lawn-instructions'] : '' %><%- features.users ? features.snippets['users-instructions'] : '' %><%- features.minotaur ? features.snippets['minotaur-instructions'] : '' %>
 ### Root Directory Folders ###
 
  - **/config**: Contains configuration files for environment specific values.

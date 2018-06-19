@@ -16,13 +16,14 @@ export interface PackageConfig {
   devDependencies: StringMap
 }
 
-export interface LawnContext {
-  snippets: StringMap
-}
+// export interface LawnContext {
+//   snippets: StringMap
+// }
 
 export interface Features {
-  lawn: LawnContext | undefined
+  lawn: boolean
   minotaur: boolean
+  snippets: StringMap
   users: boolean
 }
 
