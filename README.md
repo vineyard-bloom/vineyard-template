@@ -2,21 +2,25 @@
 
 ---------
 
-### Running the Template For the First Time ###
-1. Run `$yarn initialStartUp`. This will..
-    1. install all dependencies
-    2. create your config.ts and config-test.ts configuration files.
-    3. compile your json-schema to typescript
-    4. compile your typescript
-2. Modify config/config.ts `realConfig.database` to indicate a database of your choosing. `realConfig.database.devMode` should be `true`. Run `$ yarn tsc`.
-3. If the database name added above doesn't yet refer to an existing db, create it. In the command line enter the psql console (`$psql` ) and create the database (`CREATE DATABASE your_db_name;`) and quit (`\q`).
-4. Run `$ yarn resetDb`. This will add the vineyard tables (as well as the default user table included in this template) to your database.
-5. To start the server `$ yarn dev`.
+### Generating a Template from using Yeoman ###
 
-#### Running Tests ####
-The included tests all reference a second config file, config/config-test.ts. Tests may point at any config file, and 
-many may be created and used. To get the included tests to run, modify config/config-test.ts `testConfig.database` and `$ yarn tsc` as above (step 2).
-Run `$ yarn test` to execute the tests.
+1. Clone this repository to your local machine
+1. Create a new directory for your project (outside of this repository) and navigate to it on the Command Line
+1. If you don't have Yeoman installed, install it globally with `$ npm install --global yo`
+1. Run the following command to generate the template, adjusting the relative path to fit the location of your clone of the vineyard-server-template:
+
+    `$ yo ../vineyard-server-template/generators/app`
+1. Answer the generator's questions to choose which features you would like in your project
+1. Run `$ yarn` to install dependencies (or `$ npm install`)
+1. Generate a config file by copying the config-sample file:
+
+    `$ cp config/config-sample.ts config/config.ts`
+1. Make adjustments to the config/config.ts file to fit your project configuration
+1. Run `$ yarn tsc` to compile TypeScript files to JavaScript
+
+#### Lawn Instructions ####
+
+1. Run `$ node scripts/api.js` to start the server
 
 ### Root Directory Folders ###
 
