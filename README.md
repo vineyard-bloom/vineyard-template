@@ -2,25 +2,25 @@
 
 ---------
 
-### Generating a Template from using Yeoman ###
+### Generating a Template using Yeoman ###
 
 1. Clone this repository to your local machine
 1. Create a new directory for your project (outside of this repository) and navigate to it on the Command Line
-1. If you don't have Yeoman installed, install it globally with `$ npm install --global yo`
+1. If you don't have Yeoman installed, install it globally with `npm install --global yo`
 1. Run the following command to generate the template, adjusting the relative path to fit the location of your clone of the vineyard-server-template:
 
-    `$ yo ../vineyard-server-template/generators/app`
+    `yo ../vineyard-server-template/generators/app`
 1. Answer the generator's questions to choose which features you would like in your project
-1. Run `$ yarn` to install dependencies (or `$ npm install`)
+1. Run `yarn` to install dependencies (or `npm install`)
 1. Generate a config file by copying the config-sample file:
 
-    `$ cp config/config-sample.ts config/config.ts`
+    `cp config/config-sample.ts config/config.ts`
 1. Make adjustments to the config/config.ts file to fit your project configuration
-1. Run `$ yarn tsc` to compile TypeScript files to JavaScript
+1. Run `yarn tsc` to compile TypeScript files to JavaScript
 
 #### Lawn Instructions ####
 
-1. Run `$ node scripts/api.js` to start the server
+1. Run `node scripts/api.js` to start the server
 
 ### Root Directory Folders ###
 
@@ -61,39 +61,39 @@ All of these logics, backing-services, db table collections, and endpoints are c
 ### Scripts in package.json ###
 
    ```
-   $yarn test
+   yarn test
    ```
    Runs fully automated tests.
    ```
-   $yarn extTest
+   yarn extTest
    ```
    Runs external tests. These hit live backing-services (like a live api) and should be run sparingly.
    ```
-   $yarn dev
+   yarn dev
    ```
    Starts the server.
    ```
-   $yarn resetDb
+   yarn resetDb
    ```
    Resets the database. Can run `yarn resetDb -- test` to clean the database defined in config/config-test.ts.
    ```
-   $yarn endpoints
+   yarn endpoints
    ```
    Compiles the json-schema endpoint definitions in src/endpoints/definitions to the generated files in src/endpoints/generated.
    ```
-   $yarn tsc
+   yarn tsc
    ```
    Runs tsc at the version bundled in the project (2.5.3)
    ```
-   $yarn watch
+   yarn watch
    ```
    Kicks off a process which re-runs `yarn endpoints` whenever a json-schema file is changed.
    ```
-   $yarn copyConfigSample
+   yarn copyConfigSample
    ```
    Creates `config/config.ts` and `config/config-test.ts` or sets them to match `config/config-sample.ts`.
    ```
-   $yarn initialStartUp
+   yarn initialStartUp
    ```
    Run when the project is first cloned.
 
