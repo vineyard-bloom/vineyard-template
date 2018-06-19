@@ -1,10 +1,10 @@
-import { createModel, Model } from './model/model'
+import { createModel, Model } from './model'
 import { FullConfig } from '../config/config-types'
-import { Logic } from './logic/logic'
+import { Logic } from './logic'
 import {
   BackingServices,
   createBackingServices
-} from './backing-services/backing-services'
+} from './backing-services'
 import { config as defaultConfig } from '../config/config'
 
 export interface Village {

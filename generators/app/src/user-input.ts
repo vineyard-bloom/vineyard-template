@@ -8,7 +8,7 @@ export async function gatherUserInput(generator: Generator): Promise<UserAnswers
       type: 'input',
       name: 'projectName',
       message: 'The project name',
-      default: generator.appname
+      default: generator.appname.replace(/\s+/g, '-')
     },
 
     {
