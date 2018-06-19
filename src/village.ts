@@ -22,7 +22,10 @@ export function createVillage (
   const backingServices = createBackingServices(config, backingServiceOverrides)
   const model = createModel(config.database)
   const logic = {
-    user: new UserLogic(model.User)
+    user: new UserLogic(
+      model.User,
+      new UserManager(model.ground.getLegacyDatabaseInterface(), { model: model, user_model: model.User })
+    )
   }
 
   return {

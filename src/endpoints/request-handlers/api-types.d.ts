@@ -4,14 +4,14 @@ export declare namespace requestTypes {
         data: {
             email: string;
             password: string;
-            twoFactorCode: string;
+            twoFactor: string;
         };
     }
     interface RegisterUserRequest extends Request {
         data: {
             email: string;
             password: string;
-            twoFactorCode: string;
+            twoFactorSecret: string;
         };
     }
     interface LogoutUserRequest extends Request {

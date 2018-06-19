@@ -1,12 +1,39 @@
 {
   "empty": {},
   "loginUser": {
-
+    "properties": {
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "twoFactor": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "email",
+      "password",
+      "twoFactor"
+    ]
   },
   "registerUser": {
-
-  },
-  "logoutUser": {
-
+    "properties": {
+      "email": {
+        "type": "string"
+      },
+      "password": {
+        "type": "string"
+      },
+      "twoFactorSecret": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "email",
+      "password",
+      "twoFactorSecret"
+    ]
   }
 }

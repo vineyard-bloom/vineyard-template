@@ -18,5 +18,58 @@
         "type": "bool"
       }
     }
+  },
+  "Session": {
+    "primaryKeys": ["sid"],
+    "properties": {
+      "sid": {
+        "type": "string"
+      },
+      "user": {
+        "type": "uuid",
+        "nullable": true
+      },
+      "expires": {
+        "type": "datetime"
+      },
+      "data": {
+        "type": "string"
+      }
+    }
+  },
+  "TempPassword": {
+    "primary": "user",
+    "properties": {
+      "user": {
+        "type": "guid"
+      },
+      "password": {
+        "type": "string"
+      }
+    }
+  },
+  "EmailVerification": {
+    "primary": "user",
+    "properties": {
+      "user": {
+        "type": "User"
+      },
+      "code": {
+        "type": "string"
+      }
+    }
+  },
+  "Onetimecode": {
+    "properties": {
+      "user": {
+        "type": "User"
+      },
+      "code": {
+        "type": "string"
+      },
+      "available": {
+        "type": "bool"
+      }
+    }
   }
 }

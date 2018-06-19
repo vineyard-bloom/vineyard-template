@@ -22,11 +22,22 @@ export function setUserData (
   }
 }
 
-export function createUserFixture (userLogic: UserLogic, userData: Partial<User>): Promise<User> {
+export async function createUserFixture (userLogic: UserLogic, userData: Partial<User>): Promise<User> {
   const { email, password, emailVerified, twoFactorSecret, twoFactorEnabled } = userData
   const user = setUserData(email, password, emailVerified, twoFactorSecret, twoFactorEnabled)
 
   return userLogic.createUser(user)
+}
+
+export async function createLoggedInUser (userLogic: UserLogic) {
+  const user = await createUserFixture(userLogic, {})
+  const sessionData = {
+    sid: '123',
+    user: user.id,
+    expires: Date.now()
+  }
+  const session = await userLogic.getUserManager().getSessionCollection().create(sessionData)
+  return { user: user, session: session }
 }
 
 export function createRandomUser (userLogic: UserLogic) {
@@ -41,12 +52,11 @@ export function createRandomUser (userLogic: UserLogic) {
   return userLogic.createUser(userData)
 }
 
-export function batchCreateUsers (userLogic: UserLogic, quantity: number): null {
-  createUserFixture(userLogic, {})
+export async function batchCreateUsers (userLogic: UserLogic, quantity: number): Promise<null> {
   for (let i = 0; i < quantity; i++) {
     createRandomUser(userLogic)
   }
-  console.log(`Creating ${quantity} users`)
+  console.log(`Created ${quantity} users`)
 
   return null
 }

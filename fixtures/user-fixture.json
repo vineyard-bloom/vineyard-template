@@ -1,0 +1,9 @@
+{
+  "basicUser": {
+    "email": "froggy@fresh.com",
+    "password": "frogFrog567!?!",
+    "emailVerified": true,
+    "twoFactorSecret": "babdjksbjvksbdjk",
+    "twoFactorEnabled": true
+  }
+}

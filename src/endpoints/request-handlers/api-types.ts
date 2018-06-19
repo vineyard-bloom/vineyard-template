@@ -5,7 +5,7 @@ export namespace requestTypes {
     data: {
       email: string
       password: string
-      twoFactorCode: string
+      twoFactor: string
     }
   }
 
@@ -13,7 +13,7 @@ export namespace requestTypes {
     data: {
       email: string
       password: string
-      twoFactorCode: string
+      twoFactorSecret: string
     }
   }
 

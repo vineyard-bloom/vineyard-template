@@ -8,7 +8,11 @@ import { FullConfig } from '../../config/config-types'
 import { User } from './model-types'
 
 export interface Model {
+  EmailVerification: Collection<any>
   User: Collection<User>
+  Onetimecode: Collection<any>
+  Session: Collection<any>
+  TempPassword: Collection<any>
 
   ground: Modeler
 }

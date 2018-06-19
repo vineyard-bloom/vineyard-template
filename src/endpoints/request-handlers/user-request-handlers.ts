@@ -5,7 +5,7 @@ import { UserLogic } from '../../logic/logic'
 export const userRequestHandler = {
   loginUser: (userService: UserService) => {
     return async (req: requestTypes.LoginUserRequest): Promise<responseTypes.LoginUserResponse> => {
-      const login = await userService.login2faWithBackup(req.data.twoFactorCode, req)
+      const login = await userService.login2faWithBackup(req.data.twoFactor, req)
 
       return { success: 'ok' }
     }
@@ -14,9 +14,9 @@ export const userRequestHandler = {
   registerUser: (userLogic: UserLogic, userService: UserService) => {
     return async (req: requestTypes.RegisterUserRequest): Promise<responseTypes.RegisterUserResponse> => {
       const userData = { ...req.data, emailVerified: false, twoFactorEnabled: true }
-      // const twoFactorSecret = userService.
       await userLogic.createUser(userData)
-      await userService.login2faWithBackup(userData.twoFactorCode, req)
+      const twoFactorCode = await userLogic.getTwoFactor(userData.twoFactorSecret)
+      await userService.login2faWithBackup(twoFactorCode, req)
 
       return { success: 'ok' }
     }

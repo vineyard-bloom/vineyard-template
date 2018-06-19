@@ -2,12 +2,15 @@ import { Method, Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
 import { UserManager, UserService } from 'vineyard-users'
 import { userRequestHandler } from './request-handlers/user-request-handlers'
-import { emptyPreprocessor } from './preprocessors'
+import { emptyPreprocessor, authPreprocessor } from './preprocessors'
 
 export function initializeEndpoints (server: Server, village: Village) {
   const validators = server.compileApiSchema(require('../endpoints/request-validation.json'))
-  const userManager = new UserManager(village.model.ground.getLegacyDatabaseInterface(), { model: village.model })
-  const userService = new UserService(server.getApp(), userManager, village.config.api.cookies)
+  const userService = new UserService(
+    server.getApp(),
+    village.logic.user.getUserManager(),
+    village.config.api.cookies
+  )
 
   const publicEndpoints = [
     {
@@ -35,4 +38,5 @@ export function initializeEndpoints (server: Server, village: Village) {
   ]
 
   server.createEndpoints(emptyPreprocessor, publicEndpoints)
+  server.createEndpoints(authPreprocessor(userService), authorizedEndpoints)
 }
