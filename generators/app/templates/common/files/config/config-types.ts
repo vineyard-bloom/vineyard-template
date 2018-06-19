@@ -1,4 +1,4 @@
-<%- features.lawn ? features.lawn.snippets['config-types'] : '' %>
+<%- features.lawn ? features.snippets['config-types'] : '' %>
 
 export interface DatabaseConfig {
   host: string,

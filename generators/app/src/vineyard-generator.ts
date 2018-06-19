@@ -67,16 +67,17 @@ function newPackageConfig(answers: UserAnswers, features: Features): PackageConf
   }
 }
 
-function newLawn(sourcePath: string): LawnContext {
-  return {
-    snippets: loadSnippets(sourcePath + '/lawn/snippets')
-  }
-}
+// function newLawn(sourcePath: string): LawnContext {
+//   return {
+//     snippets: loadSnippets(sourcePath + '/lawn/snippets')
+//   }
+// }
 
 function newCommonContext(answers: UserAnswers, sourcePath: string): CommonContext {
   const features = {
-    lawn: answers.includeLawn ? newLawn(sourcePath) : undefined,
+    lawn: answers.includeLawn,
     minotaur: answers.includeMinotaur,
+    snippets: loadSnippets(sourcePath + '/common/snippets'),
     users: answers.includeUsers
   }
   return {
