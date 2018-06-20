@@ -1,4 +1,10 @@
 import { createVillage } from "../src/village";
 
-const village = createVillage()
-village.model.samplePeople.create({ name: "Amber", favoriteAnimal: "cat" })
+async function populateSample(): Promise<void> {
+  const village = createVillage()
+  await village.model.samplePeople.create({ name: "Amber", favoriteAnimal: "cat" })
+  process.exit(0)
+}
+
+console.log('populating DB with sample data')
+populateSample()
