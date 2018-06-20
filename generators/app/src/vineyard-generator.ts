@@ -67,12 +67,6 @@ function newPackageConfig(answers: UserAnswers, features: Features): PackageConf
   }
 }
 
-// function newLawn(sourcePath: string): LawnContext {
-//   return {
-//     snippets: loadSnippets(sourcePath + '/lawn/snippets')
-//   }
-// }
-
 function newCommonContext(answers: UserAnswers, sourcePath: string): CommonContext {
   const features = {
     lawn: answers.includeLawn,

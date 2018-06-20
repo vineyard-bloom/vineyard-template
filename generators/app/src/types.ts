@@ -16,10 +16,6 @@ export interface PackageConfig {
   devDependencies: StringMap
 }
 
-// export interface LawnContext {
-//   snippets: StringMap
-// }
-
 export interface Features {
   lawn: boolean
   minotaur: boolean
