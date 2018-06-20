@@ -18,12 +18,13 @@ const fixtures: any = {
 
   init: async () => {
     await (model.ground as DevModeler).regenerate()
+    await createUserFixture(logic.user, 'basicUser')
     await batchCreateUsers(logic.user, 20)
     process.exit(0)
   },
 
   user: async () => {
-    await createUserFixture(logic.user, {})
+    await createUserFixture(logic.user, 'basicUser')
     process.exit(0)
   },
 

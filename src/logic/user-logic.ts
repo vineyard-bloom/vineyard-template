@@ -21,7 +21,7 @@ export class UserLogic {
 
   async isLoggedIn (userId: string): Promise<boolean> {
     const userSession = await this.userManager.getSessionCollection().first({ user: userId })
-    if (!userSession || userSession.expires > Date.now()) {
+    if (!userSession || userSession.expires < Date.now()) {
       return false
     }
 

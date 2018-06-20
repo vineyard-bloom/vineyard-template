@@ -19,6 +19,7 @@ export interface DatabaseConfig {
     username: string;
     password: string;
     dialect: string;
+    logging: boolean;
 }
 export interface FullConfig {
     api: ApiConfig;

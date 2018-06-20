@@ -21,7 +21,8 @@ export const config: FullConfig = {
     'devMode': true,
     'username': '',
     'password': '',
-    'dialect': 'postgres'
+    'dialect': 'postgres',
+    'logging': false
   }
 }
 
@@ -46,6 +47,7 @@ export const testConfig: FullConfig = {
     'devMode': true,
     'username': '',
     'password': '',
-    'dialect': 'postgres'
+    'dialect': 'postgres',
+    'logging': false
   }
 }

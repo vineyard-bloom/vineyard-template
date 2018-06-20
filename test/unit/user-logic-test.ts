@@ -13,9 +13,15 @@ describe('User Logic', function () {
     await (testModel.ground as DevModeler).regenerate()
   })
 
-  it(' can create and get a user.', async function () {
-    const createdUser = await createUserFixture(userLogic, {})
+  it(' can create and get a user', async function () {
+    const createdUser = await createUserFixture(userLogic, 'basicUser')
     const gotUser = await userLogic.getUserById(createdUser.id)
+    assert(createdUser.id && gotUser.id)
+  })
+
+  it(' can get a user by email', async function () {
+    const createdUser = await createUserFixture(userLogic, 'basicUser')
+    const gotUser = await userLogic.getUserByEmail(createdUser.email)
     assert(createdUser.id && gotUser.id)
   })
 })

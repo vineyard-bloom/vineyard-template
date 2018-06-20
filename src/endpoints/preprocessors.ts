@@ -12,6 +12,6 @@ export const versionPreprocessor = (request: Request) => {
 
 export const authPreprocessor = (userService: UserService) =>
   async (request: Request) => {
-    userService.require_logged_in(request)
+    await userService.require_logged_in(request)
     return Promise.resolve(request)
   }
