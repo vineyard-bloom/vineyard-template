@@ -17,6 +17,7 @@ const tempPath = path.resolve('test/temp')
 describe('yeoman', function () {
 
   it('can generate a minimal project', async function () {
+    // Add timeout
     await helpers.run(appGeneratorPath)
       .inDir(tempPath) // This globally modifies the working directory and does not set it back.  Yeah.
       .withPrompts({
@@ -30,7 +31,7 @@ describe('yeoman', function () {
         exec('touch amber-2.txt')
       })
       .then(() => {
-    assertExists('package.json')
+        assertExists('package.json')
       })
   })
 
