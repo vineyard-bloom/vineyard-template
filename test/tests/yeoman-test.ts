@@ -1,6 +1,7 @@
 import { assert } from 'chai'
 import * as path from "path";
 import * as fs from "fs";
+import { exec } from 'shelljs';
 
 require('source-map-support').install()
 
@@ -24,7 +25,13 @@ describe('yeoman', function () {
         includeLawn: true
       })
       .withLocalConfig({ lang: 'en' })
-
+      .then(async () => {
+        exec('yarn setup')
+        exec('touch amber-2.txt')
+      })
+      .then(() => {
     assertExists('package.json')
+      })
   })
+
 })
