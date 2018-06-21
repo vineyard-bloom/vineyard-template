@@ -18,7 +18,7 @@ export function initializeEndpoints (server: Server, village: Village) {
       path: '/status/deep',
       action: () => {
         try {
-          village.model.query('SELECT 100 as test')
+          village.model.ground.query('SELECT 100 as test;')
         } catch {
           return Promise.resolve({ status: 500, message: 'vineyard-ground db is unreachable' })
         }
