@@ -4,13 +4,13 @@
 
 ### Setting Up Your Template ###
 
-1. Run `yarn setup` to install dependencies and create config and gitignore files (or `npm setup`)
+1. Run `yarn setup` to install dependencies and create config and gitignore files (or `npm install && npm run copyConfigSample && npm run createGitignore`)
 1. Make adjustments to the config/config.ts file to fit your project configuration
-1. Run `yarn tsc` to compile TypeScript files to JavaScript (or `npm tsc`)
-
+1. Run `yarn tsc` to compile TypeScript files to JavaScript (or `npm run tsc`)
+<%- features.lawn ? features.snippets['lawn-instructions'] : '' %><%- features.users ? features.snippets['users-instructions'] : '' %><%- features.minotaur ? features.snippets['minotaur-instructions'] : '' %>
 ### Scripts in package.json ###
 
-For npm, replace `yarn` with `npm`
+For npm, replace `yarn` with `npm run`
 <%- features.lawn ? '\n`yarn dev` starts the server\n' : '' %>
 `yarn resetDb` resets the database
 
