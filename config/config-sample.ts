@@ -1,6 +1,6 @@
 import { FullConfig } from './config-types'
 
-const sampleConfig: FullConfig = {
+export const config: FullConfig = {
   'api': {
     'port': 3000,
     'ssl': {
@@ -9,7 +9,55 @@ const sampleConfig: FullConfig = {
       'privateFile': ''
     },
     'cookies': {
-      'secret': '',
+      'secret': 'blablabla',
+      'maxAge': 10000,
+      'secure': false,
+      'rolling': true
+    }
+  },
+  'database': {
+    'host': 'localhost',
+    'database': 'vineyard_server_template',
+    'devMode': true,
+    'username': '',
+    'password': '',
+    'dialect': 'postgres'
+  },
+  'bitcoin': {
+    'client': {
+      'port': 18332,
+      'user': 'root',
+      'pass': 'password1',
+      'host': 'http://127.0.0.1'
+    },
+    'minimumConfirmations': 6,
+    'cron': {
+      'addressFrequency': 1 * 60 * 1000,
+      'depositMonitorFrequency': 5 * 60 * 1000
+    }
+  },
+  'ethereum': {
+    'client': {
+      'http': 'http://localhost:8080'
+    },
+    'minimumConfirmations': 12,
+    'cron': {
+      'addressFrequency': 1 * 60 * 1000,
+      'depositMonitorFrequency': 5 * 60 * 1000
+    }
+  }
+}
+
+export const testConfig: FullConfig = {
+  'api': {
+    'port': 3030,
+    'ssl': {
+      'enabled': false,
+      'publicFile': '',
+      'privateFile': ''
+    },
+    'cookies': {
+      'secret': 'blablabla',
       'maxAge': 900000,
       'secure': false,
       'rolling': true
@@ -17,21 +65,35 @@ const sampleConfig: FullConfig = {
   },
   'database': {
     'host': 'localhost',
-    'database': '',
+    'database': 'vineyard_server_template',
     'devMode': true,
     'username': '',
     'password': '',
-    'dialect': 'postgres'
-  },
-  'janusEndpoints': {
-    'sourceDir': '/endpoints/definitions',
-    'targetDir': '/endpoints/generated',
-    'stubMode': true,
-    'endpointForSchema': 'endpointSchema'
-  },
-  'pizzaPrices': new Map<PizzaType, number>([
-    [PizzaType.cheese, 1],
-    [PizzaType.red, 0.75],
-    [PizzaType.white, 1.25]
-  ])
+    'dialect': 'postgres',
+    'logging': false
+    ,
+    'bitcoin': {
+      'client': {
+        'port': 18332,
+        'user': 'root',
+        'pass': 'password1',
+        'host': 'http://127.0.0.1'
+      },
+      'minimumConfirmations': 6,
+      'cron': {
+        'addressFrequency': 1 * 60 * 1000,
+        'depositMonitorFrequency': 5 * 60 * 1000
+      }
+    },
+    'ethereum': {
+      'client': {
+        'http': 'http://localhost:8080'
+      },
+      'minimumConfirmations': 12,
+      'cron': {
+        'addressFrequency': 1 * 60 * 1000,
+        'depositMonitorFrequency': 5 * 60 * 1000
+      }
+    }
+  }
 }

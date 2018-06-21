@@ -1,4 +1,5 @@
-import { PizzaType } from '../src/model/model-types';
+import { BitcoinConfig as BitcoinClientConfig } from 'vineyard-bitcoin';
+import { Web3EthereumClientConfig as EthereumClientConfig } from 'vineyard-ethereum';
 export interface ApiConfig {
     port: number;
     ssl: {
@@ -21,15 +22,23 @@ export interface DatabaseConfig {
     password: string;
     dialect: string;
 }
-export interface JanusEndpointsConfig {
-    sourceDir: string;
-    targetDir: string;
-    stubMode: boolean;
-    endpointForSchema: string | undefined;
+export interface BitcoinConfig {
+    client: BitcoinClientConfig;
+    minimumConfirmations: number;
+    cron: BlockchainCron;
+}
+export interface EthereumConfig {
+    client: EthereumClientConfig;
+    minimumConfirmations: number;
+    cron: BlockchainCron;
+}
+export interface BlockchainCron {
+    addressFrequency: number;
+    depositMonitorFrequency: number;
 }
 export interface FullConfig {
-    pizzaPrices: Map<PizzaType, number>;
     api: ApiConfig;
     database: DatabaseConfig;
-    janusEndpoints: JanusEndpointsConfig;
+    bitcoin: BitcoinConfig;
+    ethereum: EthereumConfig;
 }
