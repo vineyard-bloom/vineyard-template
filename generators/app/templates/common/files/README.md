@@ -4,13 +4,22 @@
 
 ### Setting Up Your Template ###
 
-1. Run `yarn` to install dependencies (or `npm install`)
-1. Generate a config file by copying the config-sample file:
-
-    `cp config/config-sample.ts config/config.ts`
+1. Run `yarn setup` to install dependencies and create config and gitignore files (or `npm setup`)
 1. Make adjustments to the config/config.ts file to fit your project configuration
-1. Run `yarn tsc` to compile TypeScript files to JavaScript
-<%- features.lawn ? features.snippets['lawn-instructions'] : '' %><%- features.users ? features.snippets['users-instructions'] : '' %><%- features.minotaur ? features.snippets['minotaur-instructions'] : '' %>
+1. Run `yarn tsc` to compile TypeScript files to JavaScript (or `npm tsc`)
+
+### Scripts in package.json ###
+
+For npm, replace `yarn` with `npm`
+<%- features.lawn ? '\n`yarn dev` starts the server\n' : '' %>
+`yarn resetDb` resets the database
+
+`yarn sampleData` seeds the database with sample data
+
+`yarn tsc` compiles typescript using the version bundled in the project
+
+`yarn setup` installs dependencies and creates config and gitignore files
+
 ### Root Directory Folders ###
 
  - **/config**: Contains configuration files for environment specific values.

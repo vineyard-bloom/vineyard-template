@@ -11,16 +11,24 @@
 
     `yo ../vineyard-server-template/generators/app`
 1. Answer the generator's questions to choose which features you would like in your project
-1. Run `yarn` to install dependencies (or `npm install`)
-1. Generate a config file by copying the config-sample file:
-
-    `cp config/config-sample.ts config/config.ts`
+1. Run `yarn setup` to install dependencies and create config and gitignore files (or `npm setup`)
 1. Make adjustments to the config/config.ts file to fit your project configuration
-1. Run `yarn tsc` to compile TypeScript files to JavaScript
+1. Run `yarn tsc` to compile TypeScript files to JavaScript (or `npm tsc`)
+<%- features.lawn ? features.snippets['lawn-instructions'] : '' %><%- features.users ? features.snippets['users-instructions'] : '' %><%- features.minotaur ? features.snippets['minotaur-instructions'] : '' %>
 
-#### Lawn Instructions ####
+### Scripts in package.json ###
 
-1. Run `node scripts/api.js` to start the server
+For npm, replace `yarn` with `npm`
+
+`yarn dev` starts the server
+
+`yarn resetDb` resets the database
+
+`yarn sampleData` seeds the database with sample data
+
+`yarn tsc` compiles typescript using the version bundled in the project
+
+`yarn setup` installs dependencies and creates config and gitignore files
 
 ### Root Directory Folders ###
 
