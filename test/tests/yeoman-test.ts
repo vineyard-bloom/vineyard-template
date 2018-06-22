@@ -1,7 +1,10 @@
-import { assert } from 'chai'
-import * as path from "path";
-import * as fs from "fs";
-import { exec } from 'shelljs';
+import { assert, expect } from 'chai'
+import * as path from "path"
+import * as fs from "fs"
+import { exec } from 'shelljs'
+var chai = require('chai')
+var chaiHttp = require('chai-http')
+chai.use(chaiHttp)
 
 require('source-map-support').install()
 
@@ -16,8 +19,11 @@ const tempPath = path.resolve('test/temp')
 
 describe('yeoman', function () {
 
+  const village = createVillage()
+startApiServer(village)
+
   it('can generate a minimal project', async function () {
-    // Add timeout
+    this.timeout(120000)
     await helpers.run(appGeneratorPath)
       .inDir(tempPath) // This globally modifies the working directory and does not set it back.  Yeah.
       .withPrompts({
@@ -26,13 +32,21 @@ describe('yeoman', function () {
         includeLawn: true
       })
       .withLocalConfig({ lang: 'en' })
-      .then(async () => {
+      .then(() => {
         exec('yarn setup')
-        exec('touch amber-2.txt')
+        exec('yarn tsc')
       })
       .then(() => {
-        assertExists('package.json')
+        chai.request()
+          .get('/status/shallow')
+          .end((err: any, res: any) => {
+            expect(err).to.be.null
+            expect(res).to.include('ok')
+          })
       })
+      // .then(() => {
+      //   assertExists('package.json')
+      // })
   })
 
 })
