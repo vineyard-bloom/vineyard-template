@@ -1,26 +1,16 @@
-import { assert, expect } from 'chai'
+import { assert } from 'chai'
 import * as path from "path"
 import * as fs from "fs"
 import { exec } from 'shelljs'
-var chai = require('chai')
-var chaiHttp = require('chai-http')
-chai.use(chaiHttp)
 
 require('source-map-support').install()
-
+const assert = require('yeoman-assert')
 const helpers = require('yeoman-test')
-
-function assertExists(filePath: string) {
-  assert(fs.statSync(filePath).isFile())
-}
 
 const appGeneratorPath = path.resolve('generators/app')
 const tempPath = path.resolve('test/temp')
 
 describe('yeoman', function () {
-
-  const village = createVillage()
-startApiServer(village)
 
   it('can generate a minimal project', async function () {
     this.timeout(120000)
@@ -34,19 +24,10 @@ startApiServer(village)
       .withLocalConfig({ lang: 'en' })
       .then(() => {
         exec('yarn setup')
-        exec('yarn tsc')
       })
       .then(() => {
-        chai.request()
-          .get('/status/shallow')
-          .end((err: any, res: any) => {
-            expect(err).to.be.null
-            expect(res).to.include('ok')
-          })
+        assert.file(['package.json', 'scripts/api.ts', 'src/model.ts', 'config/config.ts', '.gitignore', 'node_modules/vineyard-lawn/source/api.ts'])
       })
-      // .then(() => {
-      //   assertExists('package.json')
-      // })
   })
 
 })
