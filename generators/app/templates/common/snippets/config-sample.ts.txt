@@ -1,0 +1,14 @@
+  api: {
+    port: 3000,
+      ssl: {
+      enabled: false,
+        publicFile: '',
+        privateFile: ''
+    },
+    cookies: {
+      secret: '',
+        maxAge: 900000,
+        secure: false,
+        rolling: true
+    }
+  },

@@ -1,0 +1,14 @@
+export interface ApiConfig {
+  port: number,
+  ssl: {
+    enabled: boolean,
+    publicFile: string,
+    privateFile: string
+  },
+  cookies: {
+    secret: string,
+    maxAge: number,
+    secure: boolean
+    rolling: boolean
+  }
+}

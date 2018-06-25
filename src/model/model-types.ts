@@ -1,15 +1,8 @@
-import { UUID } from 'vineyard-data/modern'
-
-export interface Pizza {
-  id: UUID,
-  type: PizzaType,
-  size: number,
-  price: number
+export type User = {
+  username: string
+  email: string
+  password: string
+  emailVerified: boolean
+  twoFactorSecret: string
+  twoFactorEnabled: boolean
 }
-
-export enum PizzaType {
-  cheese,
-  red,
-  white
-}
-

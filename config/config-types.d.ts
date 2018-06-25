@@ -1,4 +1,3 @@
-import { PizzaType } from '../src/model/model-types';
 export interface ApiConfig {
     port: number;
     ssl: {
@@ -21,15 +20,7 @@ export interface DatabaseConfig {
     password: string;
     dialect: string;
 }
-export interface JanusEndpointsConfig {
-    sourceDir: string;
-    targetDir: string;
-    stubMode: boolean;
-    endpointForSchema: string | undefined;
-}
 export interface FullConfig {
-    pizzaPrices: Map<PizzaType, number>;
     api: ApiConfig;
     database: DatabaseConfig;
-    janusEndpoints: JanusEndpointsConfig;
 }

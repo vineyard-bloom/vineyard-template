@@ -3,7 +3,6 @@ import { createVillage } from '../src/village'
 
 require('source-map-support').install()
 
-
 const fixtureName = process.argv[2]
 const args = process.argv.slice(3)
 

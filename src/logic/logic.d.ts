@@ -1,7 +1,5 @@
-import { PizzaLogic } from './pizza-logic';
-import { Model } from '../model/model';
-import { FullConfig } from '../../config/config-types';
+import { UserLogic } from './user-logic';
+export * from './user-logic';
 export interface Logic {
-    pizzaLogic: PizzaLogic;
+    user: UserLogic;
 }
-export declare function createLogic(model: Model, config: FullConfig): Logic;

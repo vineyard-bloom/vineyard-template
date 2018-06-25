@@ -16,20 +16,22 @@
   "author": "",
   "dependencies": {
     "@types/node": "^7.0.16",
-    "axios": "^0.18.0",
     "source-map-support": "0.5.0",
-    "typescript": "2.5.3",
-    "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
-    "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
-    "vineyard-janus": "vineyard-bloom/vineyard-janus#1.0.0-beta",
-    "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta"
+    "typescript": "2.8.4",
+    "vineyard-lawn": "^0.5.5"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
     "@types/mocha": "^2.2.43",
+    "@types/yeoman-generator": "^2.0.3",
+    "chai": "^4.1.2",
     "mocha": "^3.2.0",
-    "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "tslint-no-unused-expression-chai": "^0.0.3"
+    "vineyard-ground": "^0.2.19",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-generator": "^2.0.5",
+    "yeoman-test": "^1.7.2",
+    "yo": "^2.0.2"
   }
 }
