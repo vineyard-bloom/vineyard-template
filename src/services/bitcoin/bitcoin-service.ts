@@ -1,7 +1,6 @@
 import { BitcoinClient } from 'vineyard-bitcoin'
 import { Action, Cron } from 'vineyard-cron'
 import { DepositMonitor, DepositMonitorManager } from 'vineyard-minotaur'
-import { DepositTransactionHandler } from './transaction-handler'
 import { BitcoinLogic } from '../../logic/bitcoin-logic'
 import { BitcoinConfig } from '../../../config/config-types'
 import { BitcoinCurrency } from '../../model/model-types'

@@ -58,6 +58,6 @@ describe('Bitcoin Deposit Monitor', function () {
     await bitcoinService.depositMonitorUpdate()
 
     const dbTransaction = await bitcoinLogic.getTransactionByTxid(txid)
-    assert(dbTransaction.id)
+    assert(dbTransaction!.id)
   })
 })
