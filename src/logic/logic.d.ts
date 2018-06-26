@@ -1,7 +1,9 @@
-import { PizzaLogic } from './pizza-logic';
 import { Model } from '../model/model';
 import { FullConfig } from '../../config/config-types';
+import { AddressLogic } from './address-logic';
+import { BitcoinLogic } from './bitcoin-logic';
 export interface Logic {
-    pizzaLogic: PizzaLogic;
+    address: AddressLogic;
+    bitcoin: BitcoinLogic;
 }
 export declare function createLogic(model: Model, config: FullConfig): Logic;

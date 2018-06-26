@@ -1,6 +1,6 @@
 import { FullConfig } from './config-types'
 
-export const config: FullConfig = {
+export const fakeConfig: FullConfig = {
   'api': {
     'port': 3000,
     'ssl': {
@@ -24,6 +24,7 @@ export const config: FullConfig = {
     'dialect': 'postgres'
   },
   'bitcoin': {
+    'stub': false,
     'client': {
       'port': 18332,
       'user': 'root',
@@ -32,25 +33,26 @@ export const config: FullConfig = {
     },
     'minimumConfirmations': 6,
     'cron': {
-      'addressFrequency': 1 * 60 * 1000,
-      'depositMonitorFrequency': 5 * 60 * 1000
+      'address': 1 * 60 * 1000,
+      'depositMonitor': 5 * 60 * 1000
     }
   },
   'ethereum': {
+    'stub': false,
     'client': {
       'http': 'http://localhost:8080'
     },
     'minimumConfirmations': 12,
     'cron': {
-      'addressFrequency': 1 * 60 * 1000,
-      'depositMonitorFrequency': 5 * 60 * 1000
+      'address': 1 * 60 * 1000,
+      'depositMonitor': 5 * 60 * 1000
     }
   }
 }
 
 export const testConfig: FullConfig = {
   'api': {
-    'port': 3030,
+    'port': 3000,
     'ssl': {
       'enabled': false,
       'publicFile': '',
@@ -58,7 +60,7 @@ export const testConfig: FullConfig = {
     },
     'cookies': {
       'secret': 'blablabla',
-      'maxAge': 900000,
+      'maxAge': 10000,
       'secure': false,
       'rolling': true
     }
@@ -69,31 +71,31 @@ export const testConfig: FullConfig = {
     'devMode': true,
     'username': '',
     'password': '',
-    'dialect': 'postgres',
-    'logging': false
-    ,
-    'bitcoin': {
-      'client': {
-        'port': 18332,
-        'user': 'root',
-        'pass': 'password1',
-        'host': 'http://127.0.0.1'
-      },
-      'minimumConfirmations': 6,
-      'cron': {
-        'addressFrequency': 1 * 60 * 1000,
-        'depositMonitorFrequency': 5 * 60 * 1000
-      }
+    'dialect': 'postgres'
+  },
+  'bitcoin': {
+    'stub': true,
+    'client': {
+      'port': 18332,
+      'user': 'root',
+      'pass': 'password1',
+      'host': 'http://127.0.0.1'
     },
-    'ethereum': {
-      'client': {
-        'http': 'http://localhost:8080'
-      },
-      'minimumConfirmations': 12,
-      'cron': {
-        'addressFrequency': 1 * 60 * 1000,
-        'depositMonitorFrequency': 5 * 60 * 1000
-      }
+    'minimumConfirmations': 6,
+    'cron': {
+      'address': 1 * 60 * 1000,
+      'depositMonitor': 5 * 60 * 1000
+    }
+  },
+  'ethereum': {
+    'stub': true,
+    'client': {
+      'http': 'http://localhost:8080'
+    },
+    'minimumConfirmations': 12,
+    'cron': {
+      'address': 1 * 60 * 1000,
+      'depositMonitor': 5 * 60 * 1000
     }
   }
 }

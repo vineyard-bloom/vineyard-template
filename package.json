@@ -22,8 +22,8 @@
     "vineyard-bitcoin": "vineyard-bloom/vineyard-bitcoin#1.3.0-beta",
     "vineyard-blockchain": "vineyard-bloom/vineyard-blockchain#1.0.0-beta",
     "vineyard-cron": "vineyard-bloom/vineyard-cron",
-    "vineyard-ethereum": "vineyard-bloom/vineyard-ethereum#1.0.0-beta",
     "vineyard-data": "vineyard-bloom/vineyard-data#1.0.0-beta",
+    "vineyard-ethereum": "vineyard-bloom/vineyard-ethereum#1.0.0-beta",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.0.0-beta",
     "vineyard-lawn": "vineyard-bloom/vineyard-lawn#1.0.0-beta",
     "vineyard-minotaur": "vineyard-bloom/vineyard-minotaur#1.0.0-beta"

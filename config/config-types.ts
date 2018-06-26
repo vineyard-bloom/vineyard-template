@@ -26,20 +26,22 @@ export interface DatabaseConfig {
 }
 
 export interface BitcoinConfig {
+  stub: boolean
   client: BitcoinClientConfig
   minimumConfirmations: number
   cron: BlockchainCron
 }
 
 export interface EthereumConfig {
+  stub: boolean
   client: EthereumClientConfig,
   minimumConfirmations: number
   cron: BlockchainCron
 }
 
 export interface BlockchainCron {
-  addressFrequency: number
-  depositMonitorFrequency: number
+  address: number
+  depositMonitor: number
 }
 
 export interface FullConfig {

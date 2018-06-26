@@ -7,6 +7,5 @@ export function initializeEndpoints (server: Server, village: Village) {
   const validators = server.compileApiSchema(require('../endpoints/request-validation.json'))
 
   server.createEndpoints(emptyPreprocessor, [
-    
   ])
 }

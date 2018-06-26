@@ -1,3 +1,55 @@
 {
-
+  "Address": {
+    "properties": {
+      "currency": {
+        "type": "int"
+      },
+      "address": {
+        "type": "string"
+      },
+      "type": {
+        "type": "int"
+      }
+    }
+  },
+  "LastBlock": {
+    "properties": {
+      "blockIndex": {
+        "type": "int",
+        "nullable": true
+      },
+      "currency": {
+        "type": "int"
+      }
+    }
+  },
+  "Transaction": {
+    "properties": {
+      "currency": {
+        "type": "int"
+      },
+      "txid": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "colossal"
+      },
+      "timeReceived": {
+        "type": "date"
+      },
+      "blockIndex": {
+        "type": "int"
+      },
+      "status": {
+        "type": "int"
+      },
+      "to": {
+        "type": "string"
+      },
+      "from": {
+        "type": "string",
+        "nullable": true
+      }
+    }
+  }
 }
