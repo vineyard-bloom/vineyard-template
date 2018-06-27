@@ -14,3 +14,4 @@ generators/app/templates/**/*.js
 generators/app/templates/**/*.js.map
 generators/app/templates/**/*.d.ts
 test/temp
+.DS_Store
