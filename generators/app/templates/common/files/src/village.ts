@@ -1,12 +1,16 @@
 import { createModel, Model } from './model'
 import { FullConfig } from '../config/config-types'
-import { Logic } from './logic'
 import {
   BackingServices,
   createBackingServices
 } from './backing-services'
 import { config as defaultConfig } from '../config/config'
-import { Schema } from 'vineyard-ground/source/schema';
+import { Schema } from 'vineyard-ground/source/schema'
+<%- features.users ? "import { UserLogic } from 'vineyard-users'" : '' %>
+
+export interface Logic {
+  <%- features.users ? 'user: UserLogic' : '' %>
+}
 
 export interface Village {
   config: FullConfig
