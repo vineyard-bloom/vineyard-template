@@ -2,13 +2,15 @@ import { Method, Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
 
 export function initializeEndpoints (server: Server, village: Village) {
+  const validators = server.compileApiSchema(require('./request-schema.json'))
   const emptyPreprocessor = (request: Request) => Promise.resolve(request)
 
   server.createEndpoints(emptyPreprocessor, [
     {
       method: Method.get,
       path: '/status/shallow',
-      action: () => Promise.resolve({ status: 200, message: 'ok' })
+      action: () => Promise.resolve({ status: 200, message: 'ok' }),
+      validator: undefined
     }, {
       method: Method.get,
       path: '/status/deep',
@@ -19,7 +21,8 @@ export function initializeEndpoints (server: Server, village: Village) {
         } catch {
           return Promise.resolve({ status: 500, message: 'vineyard-ground db is unreachable' })
         }
-      }
+      },
+      validator: undefined
     }
   ])
 }
