@@ -1,0 +1,16 @@
+{
+  "name": "<%= packageConfig.projectName %>",
+  "version": "1.0.0-beta.0",
+  "description": "<%= packageConfig.description %>",
+  "scripts": {
+    "tsc": "echo '\ncompiling typescript\n' && tsc",
+    "dev": "echo '\nstarting api\n' && node scripts/api.js",
+    "resetDb": "echo '\nwiping and rebuilding db\n' && node scripts/reset-db.js",
+    "sampleData": "echo '\nseeding db data\n' && node scripts/sample-data.js",
+    "copyConfigSample": "echo '\ncopying fresh config\n' && cp config/config-sample.ts config/config.ts",
+    "createGitignore": "echo '\ncreating gitignore\n' && touch .gitignore && echo 'node_modules\nyarn-*\nconfig/config.*' >> .gitignore",
+    "setup": "yarn && yarn copyConfigSample && yarn createGitignore"
+  },
+  "dependencies": <%- JSON.stringify(packageConfig.dependencies, null, 4) %>,
+  "devDependencies": <%- JSON.stringify(packageConfig.devDependencies, null, 4) %>
+}

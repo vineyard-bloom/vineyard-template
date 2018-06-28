@@ -10,3 +10,8 @@ config/config.d.ts
 config/config-test.ts
 config/config-test.d.ts
 target
+generators/app/templates/**/*.js
+generators/app/templates/**/*.js.map
+generators/app/templates/**/*.d.ts
+test/temp
+.DS_Store

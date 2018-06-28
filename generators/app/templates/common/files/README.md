@@ -2,25 +2,16 @@
 
 ---------
 
-### Generating a Template using Yeoman ###
+### Setting Up Your Template ###
 
-1. Clone this repository to your local machine
-1. Create a new directory for your project (outside of this repository) and navigate to it on the Command Line
-1. If you don't have Yeoman installed, install it globally with `npm install --global yo`
-1. Run the following command to generate the template, adjusting the relative path to fit the location of your clone of the vineyard-server-template:
-
-    `yo ../vineyard-server-template/generators/app`
-1. Answer the generator's questions to choose which features you would like in your project
 1. Run `yarn setup` to install dependencies and create config and gitignore files (or `npm install && npm run copyConfigSample && npm run createGitignore`)
 1. Make adjustments to the config/config.ts file to fit your project configuration
 1. Run `yarn tsc` to compile TypeScript files to JavaScript (or `npm run tsc`)
-
+<%- features.lawn ? features.snippets['lawn-instructions'] : '' %><%- features.users ? features.snippets['users-instructions'] : '' %><%- features.minotaur ? features.snippets['minotaur-instructions'] : '' %>
 ### Scripts in package.json ###
 
 For npm, replace `yarn` with `npm run`
-
-`yarn dev` starts the server
-
+<%- features.lawn ? '\n`yarn dev` starts the server\n' : '' %>
 `yarn resetDb` resets the database
 
 `yarn sampleData` seeds the database with sample data
