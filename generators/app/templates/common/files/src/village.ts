@@ -5,13 +5,13 @@ import {
   createBackingServices
 } from './backing-services'
 import { config as defaultConfig } from '../config/config'
-import { Schema } from 'vineyard-ground/source/schema'<%- features.users ? features.snippets['logic-interface'] : '' %>
+import { Schema } from 'vineyard-ground/source/schema'<%- features.users ? features.snippets['users-logic-interface'] : '' %>
 
 export interface Village {
   config: FullConfig
   backingServices: BackingServices
   model: Model
-  logic: Logic
+  <%- features.users ? 'logic: Logic' : 'logic: any' %>
 }
 
 const sampleSchema = new Schema({
@@ -33,9 +33,7 @@ export function createVillage (
 ): Village {
   const backingServices = createBackingServices(config, backingServiceOverrides)
   const model = createModel(config.database, sampleSchema)
-  const logic = {
-    user: {}
-  }
+<%- features.users ? features.snippets['users-logic'] : '  const logic = {}' %>
 
   return {
     config,
