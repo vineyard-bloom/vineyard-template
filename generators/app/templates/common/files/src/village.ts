@@ -5,12 +5,7 @@ import {
   createBackingServices
 } from './backing-services'
 import { config as defaultConfig } from '../config/config'
-import { Schema } from 'vineyard-ground/source/schema'
-<%- features.users ? "import { UserLogic } from 'vineyard-users'" : '' %>
-
-export interface Logic {
-  <%- features.users ? 'user: UserLogic' : '' %>
-}
+import { Schema } from 'vineyard-ground/source/schema'<%- features.users ? features.snippets['logic-interface'] : '' %>
 
 export interface Village {
   config: FullConfig

@@ -1,0 +1,6 @@
+
+import { UserLogic } from './api/user-logic'
+
+export interface Logic {
+  user: UserLogic
+}
