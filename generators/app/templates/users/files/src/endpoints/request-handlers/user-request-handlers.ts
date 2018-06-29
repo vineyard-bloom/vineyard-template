@@ -1,6 +1,6 @@
 import { UserService } from 'vineyard-users'
 import { requestTypes, responseTypes } from './api-types'
-import { UserLogic } from '../../logic/logic'
+import { UserLogic } from '../../logic/user-logic'
 
 export const userRequestHandler = {
   loginUser: (userService: UserService) => {

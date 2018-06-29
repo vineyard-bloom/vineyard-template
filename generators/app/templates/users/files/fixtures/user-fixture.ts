@@ -1,5 +1,4 @@
 import { UserLogic } from './../src/logic/user-logic'
-import { User, UserData } from '../src/model/model-types'
 import {
   getRandomEmail,
   getRandomString,

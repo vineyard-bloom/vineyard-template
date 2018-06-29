@@ -1,4 +1,4 @@
 
 import { UserService } from 'vineyard-users'
 import { userRequestHandler } from './request-handlers/user-request-handlers'
-import { emptyPreprocessor, authPreprocessor } from './preprocessors'
+import { authPreprocessor } from './preprocessors'
