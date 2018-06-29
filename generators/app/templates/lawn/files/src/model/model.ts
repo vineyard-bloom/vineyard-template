@@ -12,7 +12,7 @@ export interface Model {
 
 export function createModel (
   dbConfig: FullConfig['database'],
-  schema: any = require('./schema.json'),
+  schema: any = require('../api/schema.json'),
   client: DatabaseClient = new SequelizeClient(dbConfig)
 ): Model {
   const modeler = !dbConfig.devMode

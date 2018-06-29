@@ -1,4 +1,4 @@
-import { createModel, Model } from './model/model'
+<%- features.users ? "import { UserManager } from 'vineyard-users'\n" : '' %>import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
 import {
   BackingServices,
@@ -32,7 +32,7 @@ export function createVillage (
   backingServiceOverrides: Partial<BackingServices> = {}
 ): Village {
   const backingServices = createBackingServices(config, backingServiceOverrides)
-  const model = createModel(config.database, sampleSchema)
+  <%- features.users ? 'const model = createModel(config.database)' : 'const model = createModel(config.database, sampleSchema)' %>
 <%- features.users ? features.snippets['users-logic'] : '  const logic = {}' %>
 
   return {
