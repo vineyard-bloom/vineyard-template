@@ -1,14 +1,18 @@
-import { DatabaseClient, DevModeler, Modeler, SequelizeClient } from 'vineyard-ground'
-import { FullConfig } from '../config/config-types'
-import { StrictCollection } from 'vineyard-data/modern'
+import {
+  DatabaseClient,
+  DevModeler,
+  Modeler,
+  SequelizeClient<%- features.users ? ',\n  Collection' : '' %>
+} from 'vineyard-ground'
+import { FullConfig } from '../../config/config-types'<%- features.users ? features.snippets['users-model-imports'] : '' %>
 
 export interface Model {
-  ground: Modeler
+  <%- features.users ? features.snippets['users-model-definition'] : 'ground: Modeler' %>
 }
 
 export function createModel (
   dbConfig: FullConfig['database'],
-  schema: any = {},
+  schema: any = require('./schema.json'),
   client: DatabaseClient = new SequelizeClient(dbConfig)
 ): Model {
   const modeler = !dbConfig.devMode

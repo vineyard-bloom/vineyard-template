@@ -1,4 +1,4 @@
-import { createModel, Model } from './model'
+import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
 import {
   BackingServices,
