@@ -1,11 +1,11 @@
 import { Method, Request, Server } from 'vineyard-lawn'
-import { Village } from '../village'
+import { Village } from '../village'<%- features.users ? features.snippets['users-endpoints-imports'] : '' %>
 
 export function initializeEndpoints (server: Server, village: Village) {
   const validators = server.compileApiSchema(require('./request-schema.json'))
-  const emptyPreprocessor = (request: Request) => Promise.resolve(request)
+  const emptyPreprocessor = (request: Request) => Promise.resolve(request)<%- features.users ? features.snippets['users-service'] : '' %>
 
-  server.createEndpoints(emptyPreprocessor, [
+  const publicEndpoints = [
     {
       method: Method.get,
       path: '/status/shallow',
@@ -23,6 +23,8 @@ export function initializeEndpoints (server: Server, village: Village) {
         }
       },
       validator: undefined
-    }
-  ])
+    },<%- features.users ? features.snippets['users-endpoints-public'] : '' %>
+  ]
+  <%- features.users ? features.snippets['users-endpoints-authorized'] : '' %>
+  server.createEndpoints(emptyPreprocessor, publicEndpoints)<%- features.users ? '\n  server.createEndpoints(authPreprocessor(userService), authorizedEndpoints)' : '' %>
 }

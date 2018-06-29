@@ -1,6 +1,6 @@
 import { Method, Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
-import { UserManager, UserService } from 'vineyard-users'
+import { UserService } from 'vineyard-users'
 import { userRequestHandler } from './request-handlers/user-request-handlers'
 import { emptyPreprocessor, authPreprocessor } from './preprocessors'
 
