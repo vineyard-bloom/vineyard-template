@@ -1,6 +1,6 @@
 import { DevModeler } from 'vineyard-ground/source/modeler'
 import { createVillage } from '../src/village'
-import { batchCreateUsers, createUserFixture } from '../fixtures'
+import { batchCreateUsers, createUserFixture } from '../fixtures/user-fixture'
 
 require('source-map-support').install()
 
