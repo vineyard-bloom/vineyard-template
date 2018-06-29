@@ -1,5 +1,5 @@
 import { Server } from 'vineyard-lawn'
-import { initializeEndpoints } from './endpoints'
+import { initializeEndpoints } from '../endpoints/endpoints'
 import { Village } from '../village'
 
 export async function startApiServer (village: Village): Promise<Server> {
