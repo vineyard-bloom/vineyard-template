@@ -13,7 +13,7 @@ export const userRequestHandler = {
 
   registerUser: (userLogic: UserLogic, userService: UserService) => {
     return async (req: requestTypes.RegisterUserRequest): Promise<responseTypes.RegisterUserResponse> => {
-      const userData = { ...req.data, emailVerified: false, twoFactorEnabled: true }
+      const userData = { ...req.data, emailVerified: false, twoFactorEnabled: false }
       await userLogic.createUser(userData)
       const twoFactorCode = await userLogic.getTwoFactor(userData.twoFactorSecret)
       await userService.login2faWithBackup(twoFactorCode, req)

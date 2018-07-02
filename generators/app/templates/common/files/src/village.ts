@@ -14,25 +14,12 @@ export interface Village {
   <%- features.users ? 'logic: Logic' : 'logic: any' %>
 }
 
-const sampleSchema = new Schema({
-  samplePeople: {
-    properties: {
-      name: {
-        type: "string"
-      },
-      favoriteAnimal: {
-        type: "string"
-      }
-    }
-  }
-})
-
 export function createVillage (
   config: FullConfig = defaultConfig,
   backingServiceOverrides: Partial<BackingServices> = {}
 ): Village {
   const backingServices = createBackingServices(config, backingServiceOverrides)
-  <%- features.users ? 'const model = createModel(config.database)' : 'const model = createModel(config.database, sampleSchema)' %>
+  const model = createModel(config.database)
 <%- features.users ? features.snippets['users-logic'] : '  const logic = {}' %>
 
   return {

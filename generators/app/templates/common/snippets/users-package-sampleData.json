@@ -1,0 +1,2 @@
+
+    "sampleData": "echo '\nseeding db data\n' && node scripts/fixture.js clean && node scripts/fixture.js init",
