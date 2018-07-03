@@ -1,5 +1,5 @@
 
-#### Testing Users Fixtures ####
+#### Testing User Fixtures ####
 
 Included are several scripts for testing user database fixtures.
 
