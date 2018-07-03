@@ -1,0 +1,6 @@
+  const logic = {
+    user: new UserLogic(
+      model.User,
+      new UserManager(model.ground.getLegacyDatabaseInterface(), { model: model, user_model: model.User })
+    )
+  }

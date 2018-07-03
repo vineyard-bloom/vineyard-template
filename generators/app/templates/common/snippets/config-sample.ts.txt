@@ -6,7 +6,7 @@
         privateFile: ''
     },
     cookies: {
-      secret: '',
+      secret: 'secret',
         maxAge: 900000,
         secure: false,
         rolling: true

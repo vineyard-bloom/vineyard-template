@@ -18,7 +18,8 @@
     "@types/node": "^7.0.16",
     "source-map-support": "0.5.0",
     "typescript": "2.8.4",
-    "vineyard-lawn": "^0.5.5"
+    "vineyard-lawn": "^0.5.5",
+    "vineyard-users": "vineyard-bloom/vineyard-users#1.x"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -32,6 +33,6 @@
     "yeoman-assert": "^3.1.1",
     "yeoman-generator": "^2.0.5",
     "yeoman-test": "^1.7.2",
-    "yo": "^2.0.2"
+    "yo": "^2.0.3"
   }
 }

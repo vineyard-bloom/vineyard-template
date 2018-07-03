@@ -1,4 +1,4 @@
-import { UserManager, UserService } from 'vineyard-users'
+import { UserManager } from 'vineyard-users'
 import { createModel, Model } from './model/model'
 import { FullConfig } from '../config/config-types'
 import { Logic, UserLogic } from './logic'

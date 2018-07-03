@@ -1,3 +1,5 @@
-export declare const emptyPreprocessor: (request: any) => Promise<any>;
-export declare const versionPreprocessor: (request: any) => void;
-export declare const authPreprocessor: (userService: any) => (request: any) => Promise<any>;
+import { Request } from 'vineyard-lawn';
+import { UserService } from 'vineyard-users';
+export declare const emptyPreprocessor: (request: Request) => Promise<Request>;
+export declare const versionPreprocessor: (request: Request) => void;
+export declare const authPreprocessor: (userService: UserService) => (request: Request) => Promise<Request>;

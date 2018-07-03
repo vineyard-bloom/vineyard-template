@@ -1,0 +1,6 @@
+
+  const userService = new UserService(
+    server.getApp(),
+    village.logic.user.getUserManager(),
+    village.config.api.cookies
+  )

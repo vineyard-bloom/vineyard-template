@@ -1,5 +1,5 @@
 import * as Generator from 'yeoman-generator'
-import { CommonContext, Features, LawnContext, PackageConfig, StringMap, UserAnswers } from "./types";
+import { CommonContext, Features, PackageConfig, StringMap, UserAnswers } from "./types";
 import { gatherUserInput } from "./user-input";
 
 const fs = require('fs')
@@ -88,4 +88,6 @@ export async function main(generator: Generator) {
 
   if (context.features.lawn)
     copyBundle(generator, 'lawn/files', context)
+  if (context.features.users)
+    copyBundle(generator, 'users/files', context)
 }

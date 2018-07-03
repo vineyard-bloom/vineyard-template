@@ -1,0 +1,9 @@
+
+  const authorizedEndpoints = [
+    {
+      method: Method.post,
+      path: 'user/logout',
+      action: userRequestHandler.logoutUser(userService),
+      validator: validators.logoutUser
+    }
+  ]

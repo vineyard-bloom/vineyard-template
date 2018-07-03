@@ -1,0 +1,11 @@
+ {
+      method: Method.post,
+      path: 'user/login',
+      action: userRequestHandler.loginUser(userService),
+      validator: validators.loginUser
+    }, {
+      method: Method.post,
+      path: 'user',
+      action: userRequestHandler.registerUser(village.logic.user, userService),
+      validator: validators.registerUser
+    }

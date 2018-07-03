@@ -13,9 +13,7 @@
 For npm, replace `yarn` with `npm run`
 <%- features.lawn ? '\n`yarn dev` starts the server\n' : '' %>
 `yarn resetDb` resets the database
-
-`yarn sampleData` seeds the database with sample data
-
+<%- features.users ? '\n`yarn sampleData` seeds the database with sample data\n' : '' %>
 `yarn tsc` compiles typescript using the version bundled in the project
 
 `yarn setup` installs dependencies and creates config and gitignore files
