@@ -5,7 +5,9 @@
 ### Generating a Template using Yeoman ###
 
 1. Clone this repository to your local machine
-1. Create a new directory for your project (outside of this repository) and navigate to it on the Command Line
+1. From the `vineyard-server-template` directory, run `yarn` to install dependencies
+1. From the `vineyard-server-template` directory, run `yarn tsc` to transpile TypeScript files
+1. Create a **separate folder** for your project (outside of this repository) and navigate to it on the Command Line
 1. If you don't have Yeoman installed, install it globally with `npm install --global yo`
 1. Run the following command to generate the template, adjusting the relative path to fit the location of your clone of the vineyard-server-template:
 
