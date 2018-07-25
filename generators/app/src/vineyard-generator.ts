@@ -1,5 +1,5 @@
 import * as Generator from 'yeoman-generator'
-import { CommonContext, Features, LawnContext, PackageConfig, StringMap, UserAnswers } from "./types";
+import { CommonContext, Features, PackageConfig, StringMap, UserAnswers } from "./types";
 import { gatherUserInput } from "./user-input";
 
 const fs = require('fs')
@@ -39,7 +39,7 @@ function prepareDependencies(features: Features): StringMap {
   let result: StringMap = {
     "@types/node": "^7.0.16",
     "source-map-support": "0.5.0",
-    "typescript": "2.8.4",
+    "typescript": "2.9.2",
     "vineyard-ground": "vineyard-bloom/vineyard-ground#1.x"
   }
 
