@@ -1,6 +1,5 @@
 import { DatabaseClient, DevModeler, Modeler, SequelizeClient } from 'vineyard-ground'
 import { FullConfig } from '../config/config-types'
-import { StrictCollection } from 'vineyard-data/modern'
 
 export interface Model {
   ground: Modeler

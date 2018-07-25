@@ -1,10 +1,10 @@
-import { Method, Request, Server } from 'vineyard-lawn'
+import { createVersionPreprocessor, Version, Method, Request, Server } from 'vineyard-lawn'
 import { Village } from '../village'
 
 export function initializeEndpoints (server: Server, village: Village) {
-  const emptyPreprocessor = (request: Request) => Promise.resolve(request)
+  const versionPreprocessor = createVersionPreprocessor([new Version(1)])
 
-  server.createEndpoints(emptyPreprocessor, [
+  server.createEndpoints(versionPreprocessor, [
     {
       method: Method.get,
       path: '/',
